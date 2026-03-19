@@ -1,0 +1,1 @@
+window.recom_list = []

@@ -4,13 +4,14 @@ const recomRoutes = require('./routes/recom');
 const articleRoutes = require('./routes/article');
 const { closeDb, db, initDB } = require('./config/db');
 const { startExportSchedule, stopExportSchedule } = require('./utils/schedule');
-const { generateHtml } =  require('./utils/generateHtml');
-const { generateSitemap } =  require('./utils/generateSitemap');
 const path = require('path');
+
+process.env.is_dev = false;
 process.env.DIST_PATH = "/root/pansou_dist/dist";
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config(); // 加载 .env 到 process.env
   process.env.DIST_PATH = path.join(process.cwd(), '/public');
+  process.env.is_dev = true;
 }
 const app = express();
 const port = 5618;
@@ -23,14 +24,11 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
 app.use('/recom', recomRoutes);
 app.use('/article', articleRoutes);
 // 启动服务
-app.listen(port,async  () => {
+app.listen(port, async () => {
   console.log(`✅ Express 服务运行在 http://localhost:${port}`);
-  console.log(process.env.NODE_ENV )
+  console.log(process.env.NODE_ENV)
   await initDB(db);
-  await generateHtml();
-  await generateSitemap();
-  // 启动定时任务
-  // startExportSchedule();
+  await startExportSchedule();   
 });
 
 // 进程退出时优雅关闭

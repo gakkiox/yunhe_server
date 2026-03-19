@@ -1,5 +1,5 @@
 const { db } = require('../config/db');
-const { saveDbDataToJson } = require('../utils/jsonExport');
+const { saveDbDataToJson } = require('../utils/schedule');
 
 // 新增资源
 exports.addRecom = (req, res) => {
