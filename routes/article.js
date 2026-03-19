@@ -13,5 +13,5 @@ router.post('/edit', articleController.editArticle);
 
 // 删除文章接口
 router.post('/delete', articleController.deleteArticle);
-
+router.post('/render', articleController.render);
 module.exports = router;

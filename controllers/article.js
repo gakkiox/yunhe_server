@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const jsonPath = path.join(process.cwd(), 'utils/data.json');
+const { generateHtml } = require('../utils/generateHtml');
+const { generateSitemap } = require('../utils/generateSitemap');
 // 定义JSON文件路径（相对/绝对路径都可以）
 function generateAuthorMotto() {
   try {
@@ -15,7 +17,7 @@ function generateAuthorMotto() {
     console.error('错误：', err.message);
   }
 }
-// 根据文章内容计算大致阅读时间（分钟）
+
 function calculateReadingTime(content) {
   let wordsPerMinute = 300;
   if (!content || typeof content !== 'string') {
@@ -45,11 +47,11 @@ function getMd5TimestampMiddle7() {
   try {
     const timestamp = Date.now().toString();
     const md5Hash = crypto.createHash('md5')
-      .update(timestamp, 'utf8') 
+      .update(timestamp, 'utf8')
       .digest('hex');
     const startIndex = Math.floor((md5Hash.length - 7) / 2);
     const middle7 = md5Hash.slice(startIndex, startIndex + 7);
-    
+
     return middle7;
   } catch (err) {
     console.error('生成 MD5 中间7位失败：', err.message);
@@ -158,10 +160,10 @@ exports.addArticle = (req, res) => {
   if (!title || !summary || !content || !tags) {
     return res.json({ code: 400, message: '标题/摘要/内容/标签不能为空', data: null });
   }
-  let slug = generateRandomString()+getMd5TimestampMiddle7()
+  let slug = generateRandomString() + getMd5TimestampMiddle7()
   const autoFields = {
     slug,
-    create_time: generateRandomDate(), 
+    create_time: generateRandomDate(),
     cover_image: `https://picsum.photos/800/400?random=${Math.floor(Math.random() * 1000)}`, // 随机封面图
     view_count: Math.floor(Math.random() * 2000),
     author: generateRandomAuthor(),
@@ -253,3 +255,9 @@ exports.deleteArticle = (req, res) => {
     res.json({ code: 200, message: '删除文章成功', data: null });
   });
 };
+
+exports.render = async (req, res) => {
+  await generateHtml();
+  await generateSitemap();
+  res.json({ code: 200, message: '操作成功', data: null });
+}

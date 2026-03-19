@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,14 +13,18 @@
   <!-- 引入 Element Plus JS -->
   <script src="https://cdn.bootcdn.net/ajax/libs/element-plus/2.11.4/index.full.min.js"></script>
   <!-- 引入 Axios -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.10.0/axios.min.js" integrity="sha512-WkZrEcQ5LMyNy6Y2PQf+Tu3vMcsmKKRKuPXtJSTHQJ3mpuvLRlA5dlDDhrrcXfyWr6Z/y3wIMfjfqVFO/gDZYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.10.0/axios.min.js"
+    integrity="sha512-WkZrEcQ5LMyNy6Y2PQf+Tu3vMcsmKKRKuPXtJSTHQJ3mpuvLRlA5dlDDhrrcXfyWr6Z/y3wIMfjfqVFO/gDZYQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body class="bg-gray-50">
   <div id="app" class="container mx-auto px-4 py-8 max-w-7xl">
     <!-- 操作栏 -->
     <div class="mb-6 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-gray-800">文章管理</h1>
       <div class="flex space-x-3">
+        <el-button type="primary" @click="renderArticles">生成文章</el-button>
         <el-button type="primary" @click="openAddDialog">新增文章</el-button>
         <el-button type="success" @click="openJsonImportDialog">JSON导入</el-button>
       </div>
@@ -48,14 +53,10 @@
         <el-table-column prop="summary" label="摘要" min-width="300"></el-table-column>
         <el-table-column prop="tags" label="标签" min-width="200">
           <template #default="scope">
-            <el-tag v-for="(tag, index) in getDisplayTags(scope.row.tags)" 
-                    :key="index" 
-                    size="small" 
-                    class="mr-1 mb-1">
+            <el-tag v-for="(tag, index) in getDisplayTags(scope.row.tags)" :key="index" size="small" class="mr-1 mb-1">
               {{ tag }}
             </el-tag>
-            <span v-if="getTagCount(scope.row.tags) > 3" 
-                  class="text-gray-500 text-xs ml-1">
+            <span v-if="getTagCount(scope.row.tags) > 3" class="text-gray-500 text-xs ml-1">
               +{{ getTagCount(scope.row.tags) - 3 }}个
             </span>
           </template>
@@ -71,14 +72,9 @@
 
     <!-- 分页 -->
     <div class="mt-4 flex justify-end">
-      <el-pagination
-        v-model:current-page="pagination.pageNum"
-        v-model:page-size="pagination.pageSize"
-        :total="pagination.total"
-        layout="total, sizes, prev, pager, next, jumper"
-        @size-change="fetchArticleList"
-        @current-change="fetchArticleList"
-      ></el-pagination>
+      <el-pagination v-model:current-page="pagination.pageNum" v-model:page-size="pagination.pageSize"
+        :total="pagination.total" layout="total, sizes, prev, pager, next, jumper" @size-change="fetchArticleList"
+        @current-change="fetchArticleList"></el-pagination>
     </div>
 
     <!-- 新增/编辑弹窗 -->
@@ -88,20 +84,10 @@
           <el-input v-model="form.title" placeholder="请输入文章标题"></el-input>
         </el-form-item>
         <el-form-item label="文章摘要" prop="summary">
-          <el-input
-            v-model="form.summary"
-            type="textarea"
-            :rows="3"
-            placeholder="请输入文章摘要"
-          ></el-input>
+          <el-input v-model="form.summary" type="textarea" :rows="3" placeholder="请输入文章摘要"></el-input>
         </el-form-item>
         <el-form-item label="文章内容" prop="content">
-          <el-input
-            v-model="form.content"
-            type="textarea"
-            :rows="8"
-            placeholder="请输入文章内容"
-          ></el-input>
+          <el-input v-model="form.content" type="textarea" :rows="8" placeholder="请输入文章内容"></el-input>
         </el-form-item>
         <el-form-item label="文章标签" prop="tags">
           <el-input v-model="form.tags" placeholder="请输入标签，多个标签用英文逗号分隔"></el-input>
@@ -117,12 +103,8 @@
     <el-dialog v-model="jsonImportVisible" title="JSON数据导入" width="800px">
       <el-form>
         <el-form-item label="JSON数据">
-          <el-input
-            v-model="jsonImportData"
-            type="textarea"
-            :rows="10"
-            placeholder='请输入JSON格式的对象，例如：{"title": "标题", "summary": "摘要", "content": "内容", "tags": "标签1,标签2"}'
-          ></el-input>
+          <el-input v-model="jsonImportData" type="textarea" :rows="10"
+            placeholder='请输入JSON格式的对象，例如：{"title": "标题", "summary": "摘要", "content": "内容", "tags": "标签1,标签2"}'></el-input>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -134,7 +116,7 @@
 
   <script>
     const { createApp, ref, reactive, onMounted } = Vue
-    const { ElMessage, ElMessageBox  } = ElementPlus
+    const { ElMessage, ElMessageBox } = ElementPlus
 
     createApp({
       setup() {
@@ -266,7 +248,7 @@
 
           try {
             const jsonData = JSON.parse(jsonImportData.value)
-            
+
             // 验证数据结构
             if (Array.isArray(jsonData)) {
               // 如果是数组，则处理第一个元素
@@ -370,7 +352,20 @@
             console.error(error)
           }
         }
-
+        const renderArticles = async function () {
+          const response = await fetch('/article/render', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({action: "render"})
+          })
+          const res = await response.json()
+          if (res.code === 200) {
+            ElMessage.success('重新生成文章成功')
+            fetchArticleList() // 重新加载列表
+          } else {
+            ElMessage.error('重新生成文章失败：' + res.message)
+          }
+        }
         // 初始化加载列表
         onMounted(() => {
           fetchArticleList();
@@ -397,10 +392,12 @@
           submitForm,
           deleteArticle,
           getDisplayTags,
-          getTagCount
+          getTagCount,
+          renderArticles
         }
       }
     }).use(ElementPlus).mount('#app')
   </script>
 </body>
+
 </html>
