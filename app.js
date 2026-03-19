@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const recomRoutes = require('./routes/recom');
+const articleRoutes = require('./routes/article');
 const { closeDb } = require('./config/db');
 const { startExportSchedule, stopExportSchedule } = require('./utils/schedule');
 
 const app = express();
-const port = 3000;
+const port = 5618;
 app.use(express.static('public'));
 // 中间件
 app.use(bodyParser.json({ limit: '1mb' }));
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
 
 // 挂载路由
 app.use('/recom', recomRoutes);
-
+app.use('/article', articleRoutes);
 // 启动服务
 app.listen(port, () => {
   console.log(`✅ Express 服务运行在 http://localhost:${port}`);

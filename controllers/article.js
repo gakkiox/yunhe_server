@@ -1,0 +1,213 @@
+const { db } = require('../config/db.js');
+const fs = require('fs');
+const path = require('path');
+// 定义JSON文件路径（相对/绝对路径都可以）
+
+function generateRandomAuthor(){
+  const jsonPath = path.join(process.cwd(), 'utils/data.json');
+  try {
+
+    const data = fs.readFileSync(jsonPath, 'utf8');
+    let author = data.author[Math.floor(Math.random() * data.author.length)]
+    return author;
+  } catch (err) {
+    console.error('错误：', err.message);
+  }
+}
+// 异步读取文件（utf8 指定编码，避免乱码）
+
+// 新增：生成6-12位随机字符串的工具方法
+function generateRandomString() {
+  const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const minLength = 6;
+  const maxLength = 12;
+  // 随机生成6-12之间的长度
+  const length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    // 随机选取字符
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+function generateRandomDate() {
+  // 定义起始和结束时间戳（2020-01-01 00:00:00 至 2026-02-28 23:59:59）
+  const start = new Date('2020-01-01').getTime();
+  const end = new Date('2026-02-28').getTime();
+  // 生成随机时间戳
+  const randomTimestamp = Math.floor(Math.random() * (end - start + 1)) + start;
+  // 转换为日期对象并格式化
+  const randomDate = new Date(randomTimestamp);
+  const year = randomDate.getFullYear();
+  const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // 月份从0开始，补0
+  const day = String(randomDate.getDate()).padStart(2, '0'); // 补0
+  return `${year}-${month}-${day}`;
+}
+// 工具函数：格式化数据库返回的字段名（数据库下划线格式，前端无需转换，此处仅做字段映射）
+function formatArticle(article) {
+  return {
+    id: article.id, // 自增ID
+    title: article.title,
+    summary: article.summary,
+    content: article.content,
+    tags: article.tags,
+    create_time: article.create_time, // 下划线格式
+    cover_image: article.cover_image, // 下划线格式
+    view_count: article.view_count, // 下划线格式
+    author: article.author, // 下划线格式（字段名本身无驼峰）
+    like_count: article.like_count, // 下划线格式
+    slug: article.slug // 新增slug字段
+  };
+}
+
+// 1. 获取文章列表（带分页、搜索）
+exports.getArticleList = (req, res) => {
+  const { pageNum = 1, pageSize = 10, title = '', tags = '' } = req.body;
+  const offset = (pageNum - 1) * pageSize;
+
+  // 构建搜索条件
+  let whereClause = '';
+  const params = [];
+  if (title) {
+    whereClause += ' AND title LIKE ?';
+    params.push(`%${title}%`);
+  }
+  if (tags) {
+    whereClause += ' AND tags LIKE ?';
+    params.push(`%${tags}%`);
+  }
+
+  // 查询总条数
+  const countSql = `SELECT COUNT(*) AS total FROM articles WHERE 1=1 ${whereClause}`;
+  db.get(countSql, params, (err, countResult) => {
+    if (err) {
+      return res.json({ code: 500, message: '查询总数失败', data: null });
+    }
+
+    // 查询分页数据（包含新增的slug字段）
+    const listSql = `
+      SELECT * FROM articles 
+      WHERE 1=1 ${whereClause} 
+      ORDER BY create_time DESC 
+      LIMIT ? OFFSET ?
+    `;
+    const listParams = [...params, pageSize, offset];
+    
+    db.all(listSql, listParams, (err, rows) => {
+      if (err) {
+        return res.json({ code: 500, message: '查询文章列表失败', data: null });
+      }
+      // 格式化字段（全部下划线格式）
+      const formattedList = rows.map(row => formatArticle(row));
+      res.json({
+        code: 200,
+        message: '查询成功',
+        data: {
+          list: formattedList,
+          total: countResult.total
+        }
+      });
+    });
+  });
+};
+
+// 2. 新增文章（仅接收title/summary/content/tags，其余自动生成，ID自增，新增slug字段）
+exports.addArticle = (req, res) => {
+  // 仅提取前端传入的4个核心字段
+  const { title, summary, content, tags } = req.body;
+  
+  // 参数校验（仅校验前端传入的字段）
+  if (!title || !summary || !content || !tags) {
+    return res.json({ code: 400, message: '标题/摘要/内容/标签不能为空', data: null });
+  }
+
+  // 自动生成的字段值（全部下划线格式字段）
+  const autoFields = {
+    slug: generateRandomString(), // 生成6-12位随机字符串作为slug
+    create_time: generateRandomDate(), // 自动生成当前日期（格式：2026-03-19）
+    cover_image: `https://picsum.photos/800/400?random=${Math.floor(Math.random() * 1000)}`, // 随机封面图
+    view_count: Math.floor(Math.random() * 500), // 随机初始阅读量（0-999）
+    author: generateRandomAuthor(),
+    like_count: Math.floor(Math.random() * 200) // 随机初始点赞数（0-199）
+  };
+
+  const insertSql = `
+    INSERT INTO articles (
+      title, summary, content, tags, slug,
+      create_time, cover_image, view_count, author, like_count
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+  db.run(
+    insertSql,
+    [
+      title, summary, content, tags, autoFields.slug,
+      autoFields.create_time,
+      autoFields.cover_image,
+      autoFields.view_count,
+      autoFields.author,
+      autoFields.like_count
+    ],
+    function (err) {
+      if (err) {
+        return res.json({ code: 500, message: '新增文章失败', data: null });
+      }
+      // 返回自增的ID
+      res.json({
+        code: 200,
+        message: '新增文章成功',
+        data: { id: this.lastID } // 数据库自增ID
+      });
+    }
+  );
+};
+
+// 3. 编辑文章（仅更新前端传入的4个核心字段，自动生成字段（含slug）不允许修改）
+exports.editArticle = (req, res) => {
+  const { id, title, summary, content, tags } = req.body;
+  
+  // 参数校验
+  if (!id || !title || !summary || !content || !tags) {
+    return res.json({ code: 400, message: 'ID/标题/摘要/内容/标签不能为空', data: null });
+  }
+
+  // 仅更新前端传入的4个字段，自动生成的字段（含slug）不修改
+  const updateSql = `
+    UPDATE articles 
+    SET title = ?, summary = ?, content = ?, tags = ?
+    WHERE id = ?
+  `;
+  db.run(
+    updateSql,
+    [title, summary, content, tags, id],
+    function (err) {
+      if (err) {
+        return res.json({ code: 500, message: '编辑文章失败', data: null });
+      }
+      if (this.changes === 0) {
+        return res.json({ code: 404, message: '文章不存在', data: null });
+      }
+      res.json({ code: 200, message: '编辑文章成功', data: null });
+    }
+  );
+};
+
+// 4. 删除文章（无字段变更，仅保留）
+exports.deleteArticle = (req, res) => {
+  const { id } = req.body;
+  
+  if (!id) {
+    return res.json({ code: 400, message: '文章ID不能为空', data: null });
+  }
+
+  const deleteSql = 'DELETE FROM articles WHERE id = ?';
+  db.run(deleteSql, [id], function (err) {
+    if (err) {
+      return res.json({ code: 500, message: '删除文章失败', data: null });
+    }
+    if (this.changes === 0) {
+      return res.json({ code: 404, message: '文章不存在', data: null });
+    }
+    res.json({ code: 200, message: '删除文章成功', data: null });
+  });
+};
