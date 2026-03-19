@@ -51,13 +51,17 @@ async function processTemplateData() {
 async function generateArticleHtml(templateData) {
   let outputPath = path.join(process.env.DIST_PATH, "/articles");
   const templatePath = path.join(process.cwd(), "/template/article.html");
+  if (!fs.existsSync(outputPath)) {
+    fs.mkdirSync(outputPath, { recursive: true });
+    console.log(`✅ 已创建输出目录：${outputPath}`);
+  }
+  const filePath = path.join(outputPath, templateData.article.slug + '.html');
+  await generateTemplate(filePath, templatePath, templateData)
+}
 
+async function generateTemplate(filePath, templatePath, templateData) {
   try {
-    if (!fs.existsSync(outputPath)) {
-      fs.mkdirSync(outputPath, { recursive: true });
-      console.log(`✅ 已创建输出目录：${outputPath}`);
-    }
-    const filePath = path.join(outputPath, templateData.article.slug + '.html');
+
     if (fs.existsSync(filePath)) {
       console.log(`⚠️ 文件已存在，跳过生成：${filePath}`);
       return;
@@ -82,16 +86,24 @@ function generateDom(art) {
   `
 
 }
+async function generateIndexHtml(lis) {
+  let indexPath = path.join(process.env.DIST_PATH, "/index.html");
+  let templatePath = path.join(process.env.DIST_PATH, "idx.html");
+  if (process.env.NODE_ENV === 'development') {
+    templatePath = path.join(process.cwd(), "/template/index.html");
+  }
+
+  await generateTemplate(indexPath, templatePath, { lis })
+}
 /**
  * 生成所有文章的HTML文件
  */
 exports.generateHtml = async function () {
-  const domsPath = path.join(process.cwd(), "/public/doms.html");
   const templates = await processTemplateData();
   let doms = '';
   for (let i = templates.length; i--;) {
     await generateArticleHtml(templates[i]);
     doms += generateDom(templates[i].article)
   }
-  fs.writeFileSync(domsPath, doms);
+  await generateIndexHtml(doms)
 };

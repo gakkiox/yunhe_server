@@ -2,12 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const { db } = require('../config/db');
 
-/**
- * 将数据库数据转为 JSON 并保存到本地（排除 id 字段）
- * @param {string} savePath - 保存路径
- * @returns {Promise}
- */
-function saveDbDataToJson(savePath = path.join(__dirname, '../recom_data.js')) {
+
+function saveDbDataToJson() {
+  let savePath = process.env.DIST_PATH;
   return new Promise((resolve, reject) => {
     const sql = "SELECT * FROM recommendation ORDER BY id DESC";
     db.all(sql, [], (err, rows) => {

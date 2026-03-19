@@ -8,7 +8,7 @@ const { generateHtml } =  require('./utils/generateHtml');
 const { generateSitemap } =  require('./utils/generateSitemap');
 const path = require('path');
 process.env.DIST_PATH = "/root/pansou_dist/dist";
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
   require('dotenv').config(); // 加载 .env 到 process.env
   process.env.DIST_PATH = path.join(process.cwd(), '/public');
 }
