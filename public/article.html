@@ -12,14 +12,17 @@
   <!-- 引入 Element Plus JS -->
   <script src="https://cdn.bootcdn.net/ajax/libs/element-plus/2.11.4/index.full.min.js"></script>
   <!-- 引入 Axios -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.10.0/axios.min.js" integrity="sha512-WkZrEcQ5LMyNy6Y2PQf+Tu3vMcsmKKRKuPXtJSTHQJ3mpuvLRlA5dlDDhrrcXfyWr6Z/y3wIMfjfqVFO/gDZYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="bg-gray-50">
   <div id="app" class="container mx-auto px-4 py-8 max-w-7xl">
     <!-- 操作栏 -->
     <div class="mb-6 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-gray-800">文章管理</h1>
-      <el-button type="primary" @click="openAddDialog">新增文章</el-button>
+      <div class="flex space-x-3">
+        <el-button type="primary" @click="openAddDialog">新增文章</el-button>
+        <el-button type="success" @click="openJsonImportDialog">JSON导入</el-button>
+      </div>
     </div>
 
     <!-- 搜索栏 -->
@@ -45,9 +48,16 @@
         <el-table-column prop="summary" label="摘要" min-width="300"></el-table-column>
         <el-table-column prop="tags" label="标签" min-width="200">
           <template #default="scope">
-            <el-tag v-for="tag in scope.row.tags.split(',')" :key="tag" size="small" class="mr-1">
+            <el-tag v-for="(tag, index) in getDisplayTags(scope.row.tags)" 
+                    :key="index" 
+                    size="small" 
+                    class="mr-1 mb-1">
               {{ tag }}
             </el-tag>
+            <span v-if="getTagCount(scope.row.tags) > 3" 
+                  class="text-gray-500 text-xs ml-1">
+              +{{ getTagCount(scope.row.tags) - 3 }}个
+            </span>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="200" fixed="right">
@@ -102,11 +112,29 @@
         <el-button type="primary" @click="submitForm">{{ dialogType === 'add' ? '新增' : '编辑' }}</el-button>
       </template>
     </el-dialog>
+
+    <!-- JSON导入弹窗 -->
+    <el-dialog v-model="jsonImportVisible" title="JSON数据导入" width="800px">
+      <el-form>
+        <el-form-item label="JSON数据">
+          <el-input
+            v-model="jsonImportData"
+            type="textarea"
+            :rows="10"
+            placeholder='请输入JSON格式的对象，例如：{"title": "标题", "summary": "摘要", "content": "内容", "tags": "标签1,标签2"}'
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="jsonImportVisible = false">取消</el-button>
+        <el-button type="primary" @click="importFromJson">导入</el-button>
+      </template>
+    </el-dialog>
   </div>
 
   <script>
     const { createApp, ref, reactive, onMounted } = Vue
-    const { ElMessage } = ElementPlus
+    const { ElMessage, ElMessageBox  } = ElementPlus
 
     createApp({
       setup() {
@@ -128,6 +156,9 @@
         // 弹窗状态
         const dialogVisible = ref(false)
         const dialogType = ref('add') // add:新增 edit:编辑
+        // JSON导入弹窗状态
+        const jsonImportVisible = ref(false)
+        const jsonImportData = ref('')
         // 表单数据
         const form = reactive({
           id: '',
@@ -144,6 +175,19 @@
           tags: [{ required: true, message: '请输入文章标签', trigger: 'blur' }]
         })
         const formRef = ref(null)
+
+        // 获取要显示的标签（最多3个）
+        const getDisplayTags = (tagsString) => {
+          if (!tagsString) return []
+          const tags = tagsString.split(',')
+          return tags.slice(0, 3)
+        }
+
+        // 获取标签总数
+        const getTagCount = (tagsString) => {
+          if (!tagsString) return 0
+          return tagsString.split(',').length
+        }
 
         // 获取文章列表
         const fetchArticleList = async () => {
@@ -205,6 +249,64 @@
           form.content = row.content
           form.tags = row.tags
           dialogVisible.value = true
+        }
+
+        // 打开JSON导入弹窗
+        const openJsonImportDialog = () => {
+          jsonImportData.value = ''
+          jsonImportVisible.value = true
+        }
+
+        // 从JSON导入数据（支持单个对象）
+        const importFromJson = async () => {
+          if (!jsonImportData.value.trim()) {
+            ElMessage.warning('请输入JSON数据')
+            return
+          }
+
+          try {
+            const jsonData = JSON.parse(jsonImportData.value)
+            
+            // 验证数据结构
+            if (Array.isArray(jsonData)) {
+              // 如果是数组，则处理第一个元素
+              if (jsonData.length === 0) {
+                throw new Error('JSON数组为空')
+              }
+              if (jsonData.length > 1) {
+                ElMessage.warning('检测到多个对象，将导入第一个对象')
+              }
+              var article = jsonData[0]
+            } else if (typeof jsonData === 'object' && jsonData !== null) {
+              // 如果是单个对象
+              var article = jsonData
+            } else {
+              throw new Error('JSON数据应为对象或数组格式')
+            }
+
+            // 验证必要字段
+            if (!article.title || !article.summary || !article.content || !article.tags) {
+              throw new Error('JSON对象缺少必要字段(title, summary, content, tags)')
+            }
+
+            // 添加文章
+            const response = await fetch('/article/add', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(article)
+            })
+            const res = await response.json()
+            if (res.code === 200) {
+              ElMessage.success('成功导入文章')
+              jsonImportVisible.value = false
+              fetchArticleList() // 重新加载列表
+            } else {
+              ElMessage.error(`导入文章失败: ${res.message}`)
+            }
+          } catch (error) {
+            console.error(error)
+            ElMessage.error('JSON数据格式错误或网络错误: ' + error.message)
+          }
         }
 
         // 提交表单
@@ -271,7 +373,7 @@
 
         // 初始化加载列表
         onMounted(() => {
-          fetchArticleList()
+          fetchArticleList();
         })
 
         return {
@@ -281,6 +383,8 @@
           pagination,
           dialogVisible,
           dialogType,
+          jsonImportVisible,
+          jsonImportData,
           form,
           rules,
           formRef,
@@ -288,8 +392,12 @@
           resetSearch,
           openAddDialog,
           openEditDialog,
+          openJsonImportDialog,
+          importFromJson,
           submitForm,
-          deleteArticle
+          deleteArticle,
+          getDisplayTags,
+          getTagCount
         }
       }
     }).use(ElementPlus).mount('#app')

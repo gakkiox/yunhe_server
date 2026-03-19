@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const recomRoutes = require('./routes/recom');
 const articleRoutes = require('./routes/article');
-const { closeDb } = require('./config/db');
+const { closeDb, db, initDB } = require('./config/db');
 const { startExportSchedule, stopExportSchedule } = require('./utils/schedule');
+const { generateHtml } =  require('./utils/generateHtml');
+const { generateSitemap } =  require('./utils/generateSitemap');
 
 const app = express();
 const port = 5618;
@@ -16,8 +18,11 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '1mb' }));
 app.use('/recom', recomRoutes);
 app.use('/article', articleRoutes);
 // 启动服务
-app.listen(port, () => {
+app.listen(port,async  () => {
   console.log(`✅ Express 服务运行在 http://localhost:${port}`);
+  await initDB(db);
+  await generateHtml();
+  await generateSitemap();
   // 启动定时任务
   // startExportSchedule();
 });

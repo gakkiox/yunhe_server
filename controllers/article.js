@@ -1,31 +1,71 @@
 const { db } = require('../config/db.js');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+const jsonPath = path.join(process.cwd(), 'utils/data.json');
 // 定义JSON文件路径（相对/绝对路径都可以）
+function generateAuthorMotto() {
+  try {
+    let data = fs.readFileSync(jsonPath, 'utf8');
+    data = JSON.parse(data)
+    let motto = data.author_mottos[Math.floor(Math.random() * data.author_mottos.length)]
+    console.log(motto)
+    return motto;
+  } catch (err) {
+    console.error('错误：', err.message);
+  }
+}
+// 根据文章内容计算大致阅读时间（分钟）
+function calculateReadingTime(content) {
+  let wordsPerMinute = 300;
+  if (!content || typeof content !== 'string') {
+    return 1;
+  }
+  const withoutHtml = content.replace(/<[^>]+>/g, '');
+  const pureText = withoutHtml.replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g, '');
+  const wordCount = pureText.length;
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+  return Math.max(readingTime, 1);
+}
 
-function generateRandomAuthor(){
-  const jsonPath = path.join(process.cwd(), 'utils/data.json');
+function generateRandomAuthor() {
+
   try {
 
-    const data = fs.readFileSync(jsonPath, 'utf8');
+    let data = fs.readFileSync(jsonPath, 'utf8');
+    data = JSON.parse(data)
     let author = data.author[Math.floor(Math.random() * data.author.length)]
     return author;
   } catch (err) {
     console.error('错误：', err.message);
   }
 }
-// 异步读取文件（utf8 指定编码，避免乱码）
+
+function getMd5TimestampMiddle7() {
+  try {
+    const timestamp = Date.now().toString();
+    const md5Hash = crypto.createHash('md5')
+      .update(timestamp, 'utf8') 
+      .digest('hex');
+    const startIndex = Math.floor((md5Hash.length - 7) / 2);
+    const middle7 = md5Hash.slice(startIndex, startIndex + 7);
+    
+    return middle7;
+  } catch (err) {
+    console.error('生成 MD5 中间7位失败：', err.message);
+    // 异常兜底：返回固定7位（避免程序中断）
+    return 'default7';
+  }
+}
 
 // 新增：生成6-12位随机字符串的工具方法
 function generateRandomString() {
   const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const minLength = 6;
-  const maxLength = 12;
-  // 随机生成6-12之间的长度
+  const minLength = 5;
+  const maxLength = 10;
   const length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
   let result = '';
   for (let i = 0; i < length; i++) {
-    // 随机选取字符
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
   return result;
@@ -92,7 +132,7 @@ exports.getArticleList = (req, res) => {
       LIMIT ? OFFSET ?
     `;
     const listParams = [...params, pageSize, offset];
-    
+
     db.all(listSql, listParams, (err, rows) => {
       if (err) {
         return res.json({ code: 500, message: '查询文章列表失败', data: null });
@@ -111,32 +151,32 @@ exports.getArticleList = (req, res) => {
   });
 };
 
-// 2. 新增文章（仅接收title/summary/content/tags，其余自动生成，ID自增，新增slug字段）
 exports.addArticle = (req, res) => {
-  // 仅提取前端传入的4个核心字段
   const { title, summary, content, tags } = req.body;
-  
+
   // 参数校验（仅校验前端传入的字段）
   if (!title || !summary || !content || !tags) {
     return res.json({ code: 400, message: '标题/摘要/内容/标签不能为空', data: null });
   }
-
-  // 自动生成的字段值（全部下划线格式字段）
+  let slug = generateRandomString()+getMd5TimestampMiddle7()
   const autoFields = {
-    slug: generateRandomString(), // 生成6-12位随机字符串作为slug
-    create_time: generateRandomDate(), // 自动生成当前日期（格式：2026-03-19）
+    slug,
+    create_time: generateRandomDate(), 
     cover_image: `https://picsum.photos/800/400?random=${Math.floor(Math.random() * 1000)}`, // 随机封面图
-    view_count: Math.floor(Math.random() * 500), // 随机初始阅读量（0-999）
+    view_count: Math.floor(Math.random() * 2000),
     author: generateRandomAuthor(),
-    like_count: Math.floor(Math.random() * 200) // 随机初始点赞数（0-199）
+    like_count: Math.floor(Math.random() * 200),
+    author_motto: generateAuthorMotto(),
+    read_time: calculateReadingTime(content)
   };
-
-  const insertSql = `
-    INSERT INTO articles (
-      title, summary, content, tags, slug,
-      create_time, cover_image, view_count, author, like_count
-    )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  // 生成插入文章的SQL语句
+  let insertSql = `
+  INSERT INTO articles (
+    title, summary, content, tags, slug,
+    create_time, cover_image, view_count,
+    author, like_count, author_motto, read_time
+  )
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `;
   db.run(
     insertSql,
@@ -146,7 +186,9 @@ exports.addArticle = (req, res) => {
       autoFields.cover_image,
       autoFields.view_count,
       autoFields.author,
-      autoFields.like_count
+      autoFields.like_count,
+      autoFields.author_motto,
+      autoFields.read_time,
     ],
     function (err) {
       if (err) {
@@ -165,7 +207,7 @@ exports.addArticle = (req, res) => {
 // 3. 编辑文章（仅更新前端传入的4个核心字段，自动生成字段（含slug）不允许修改）
 exports.editArticle = (req, res) => {
   const { id, title, summary, content, tags } = req.body;
-  
+
   // 参数校验
   if (!id || !title || !summary || !content || !tags) {
     return res.json({ code: 400, message: 'ID/标题/摘要/内容/标签不能为空', data: null });
@@ -195,7 +237,7 @@ exports.editArticle = (req, res) => {
 // 4. 删除文章（无字段变更，仅保留）
 exports.deleteArticle = (req, res) => {
   const { id } = req.body;
-  
+
   if (!id) {
     return res.json({ code: 400, message: '文章ID不能为空', data: null });
   }
