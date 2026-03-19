@@ -6,7 +6,12 @@ const { closeDb, db, initDB } = require('./config/db');
 const { startExportSchedule, stopExportSchedule } = require('./utils/schedule');
 const { generateHtml } =  require('./utils/generateHtml');
 const { generateSitemap } =  require('./utils/generateSitemap');
-
+const path = require('path');
+process.env.DIST_PATH = "/root/pansou_dist/dist";
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config(); // 加载 .env 到 process.env
+  process.env.DIST_PATH = path.join(process.cwd(), '/public');
+}
 const app = express();
 const port = 5618;
 app.use(express.static('public'));
@@ -20,6 +25,7 @@ app.use('/article', articleRoutes);
 // 启动服务
 app.listen(port,async  () => {
   console.log(`✅ Express 服务运行在 http://localhost:${port}`);
+  console.log(process.env.NODE_ENV )
   await initDB(db);
   await generateHtml();
   await generateSitemap();

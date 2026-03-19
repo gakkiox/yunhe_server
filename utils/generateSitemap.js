@@ -38,7 +38,8 @@ async function generateSitemap() {
 
     // 创建流
     const smStream = new SitemapStream({ hostname });
-    const mapPath = path.join(process.cwd(), "/public/sitemap.xml")
+    let mapPath = path.join(process.env.DIST_PATH, "/sitemap.xml")
+
     const writeStream = createWriteStream(mapPath);
 
     smStream.pipe(writeStream);
@@ -46,7 +47,7 @@ async function generateSitemap() {
     smStream.end();
 
     await streamToPromise(smStream);
-    console.log('✅ sitemap.xml 自动生成完成！');
+    console.log('✅ sitemap.xml 自动生成完成: '+mapPath);
   } catch (err) {
     console.error('❌ 生成失败：', err);
   }

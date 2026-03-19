@@ -49,7 +49,7 @@ async function processTemplateData() {
  * 生成文章HTML文件
  */
 async function generateArticleHtml(templateData) {
-  const outputPath = path.join(process.cwd(), "/public/articles");
+  let outputPath = path.join(process.env.DIST_PATH, "/articles");
   const templatePath = path.join(process.cwd(), "/template/article.html");
 
   try {
