@@ -89,7 +89,8 @@ function generateDom(art) {
 async function generateIndexHtml(lis) {
   let indexPath = path.join(process.env.DIST_PATH, "/index.html");
   let templatePath = path.join(process.env.DIST_PATH, "idx.html");
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.is_dev == 'yes') {
+    indexPath = path.join(process.env.DIST_PATH, "/index_test.html");
     templatePath = path.join(process.cwd(), "/template/idx.html");
   }
 

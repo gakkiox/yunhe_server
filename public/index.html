@@ -1,28 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        #loginInput {
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #loginInput:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+
+        #loginButton {
+            width: 100%;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #loginButton:hover {
+            background-color: #0056b3;
+        }
+
+        #loginButton:active {
+            background-color: #004085;
+        }
+
+        #loginButton:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            padding: 12px 24px;
+            border-radius: 4px;
+            color: white;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.success {
+            background-color: #28a745;
+        }
+
+        .toast.error {
+            background-color: #dc3545;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.js"></script>
 </head>
 <body>
-  <ul>
-    
-    <li class="animate-in slide-in-l-2/3">
-      <a title="2026全网网盘搜索使用指南：高效查找各类网盘资源与有效链接" href="/articles/RWRyk6d4d5a2.html" target="_blank">2026全网网盘搜索使用指南：高效查找各类网盘资源与有效链接</a>
-      <p>本文全面讲解网盘搜索技巧，覆盖百度网盘、阿里云盘、夸克网盘、蓝奏云等主流平台，教你快速搜索学习资料、软件、影视、素材等资源，获取有效链接与永久有效资源，避开失效链接与解压码难题，一站式掌握免费网盘搜索与资源获取方法</p>
-    </li>
-  
-    <li class="animate-in slide-in-l-2/3">
-      <a title="2026网盘搜索实用教程：多平台资源快速查找，永久有效链接一键获取" href="/articles/XyJdzA3mfevW.html" target="_blank">2026网盘搜索实用教程：多平台资源快速查找，永久有效链接一键获取</a>
-      <p>本文系统讲解网盘搜索方法，覆盖百度网盘、阿里云盘、夸克网盘、蓝奏云等主流平台，结合高频关键词精准搜索学习资料、软件、影视、素材等网盘资源，解决链接失效、解压码问题，轻松获取免费、有效、最新的网盘文件</p>
-    </li>
-  
-    <li class="animate-in slide-in-l-2/3">
-      <a title="零基础网盘搜索完全指南：多平台资源一键查找，轻松获取有效网盘链接" href="/articles/IUsWZevlnSDfRXk2.html" target="_blank">零基础网盘搜索完全指南：多平台资源一键查找，轻松获取有效网盘链接</a>
-      <p>本文面向零基础用户，全面讲解网盘搜索基础用法，覆盖百度网盘、阿里云盘、夸克网盘、蓝奏云等主流平台，教你用高频关键词快速查找学习资料、软件、影视、素材等网盘资源，轻松获取永久有效、无解压码的稳定文件</p>
-    </li>
-  
-  </ul>
+    <div class="login-container">
+        <input type="text" id="loginInput" placeholder="请输入登录信息">
+        <button id="loginButton">登录</button>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script>
+        (async function(){
+            const toast = document.getElementById('toast');
+            const loginInput = document.getElementById('loginInput');
+            const loginButton = document.getElementById('loginButton');
+
+            function showToast(message, type) {
+                toast.textContent = message;
+                toast.className = `toast show ${type}`;
+                clearTimeout(toast.timer);
+                toast.timer = setTimeout(() => {
+                    toast.className = 'toast';
+                }, 3000);
+            }
+
+            async function handleLogin(md5Value){
+                try {
+                    loginButton.disabled = true;
+                    loginButton.textContent = '登录中...';
+
+                    const response = await fetch('/login/up', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            md5_data: md5Value
+                        })
+                    });
+
+                    const result = await response.json();
+                    if (result.code === 200) {
+                        localStorage.setItem('login_md5', md5Value);
+                        showToast('登录成功！即将跳转到首页', 'success');
+                        setTimeout(() => {
+                            window.location.href = result.data.page;
+                        }, 1500);
+                    } else {
+                        localStorage.removeItem('login_md5');
+                        showToast(result.message || '用户名/密码错误', 'error');
+                    }
+                } catch (error) {
+                    console.error(error);
+                    showToast('登录请求失败，请检查网络或后端服务！', 'error');
+                } finally {
+                    loginButton.disabled = false;
+                    loginButton.textContent = '登录';
+                }
+            }
+
+            const loginMd5 = localStorage.getItem('login_md5');
+            if (loginMd5) {
+                await handleLogin(loginMd5);
+            }
+
+            loginButton.addEventListener('click', async () => {
+                const inputValue = loginInput.value.trim();
+                if (!inputValue) {
+                    showToast('请输入登录信息！', 'error');
+                    return;
+                }
+                const md5Value = md5(inputValue);
+                await handleLogin(md5Value);
+            });
+
+            loginInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    loginButton.click();
+                }
+            });
+        })()
+    </script>
 </body>
 </html>

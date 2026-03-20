@@ -45,7 +45,7 @@ function saveDbDataToJson() {
 /**
  * 启动每10分钟导出 JSON 的定时任务
  */
-async function startExportSchedule() {
+async function startJobs() {
   saveDbDataToJson().catch(err => console.error('❌ 定时任务首次执行失败：', err.msg));
   await generateHtml();
   await generateSitemap();
@@ -78,7 +78,7 @@ async function startExportSchedule() {
 /**
  * 停止定时任务
  */
-function stopExportSchedule() {
+function stopJobs() {
   if (exportJob) {
     exportJob.cancel();
     console.log('🛑 定时任务已停止');
@@ -86,4 +86,4 @@ function stopExportSchedule() {
   }
 }
 
-module.exports = { startExportSchedule, stopExportSchedule, saveDbDataToJson };
+module.exports = { startJobs, stopJobs,saveDbDataToJson };

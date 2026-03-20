@@ -20,6 +20,7 @@ function initRecomTable(db) {
       CREATE TABLE IF NOT EXISTS recommendation (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
+        short_name TEXT NOT NULL,
         pan_type TEXT NOT NULL,
         link TEXT NOT NULL,
         date TEXT NOT NULL,

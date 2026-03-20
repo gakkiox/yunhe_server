@@ -1,9 +1,9 @@
 const { db } = require('../config/db');
-const { saveDbDataToJson } = require('../utils/schedule');
+const { saveDbDataToJson } = require('../utils/jobs');
 
 // 新增资源
 exports.addRecom = (req, res) => {
-  const { name, pan_type, link, date, s_id, pwd } = req.body;
+  const { name, pan_type, link, date, s_id, pwd, short_name } = req.body;
 
   // 参数校验
   if (!name || !pan_type || !link || !date || !s_id || !pwd) {
@@ -15,8 +15,8 @@ exports.addRecom = (req, res) => {
   }
 
   // 插入数据
-  const sql = `INSERT INTO recommendation (name, pan_type, link, date, s_id, pwd) VALUES (?, ?, ?, ?, ?, ?)`;
-  db.run(sql, [name, pan_type, link, date, s_id, pwd], function (err) {
+  const sql = `INSERT INTO recommendation (name, pan_type, link, date, s_id, pwd, short_name) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  db.run(sql, [name, pan_type, link, date, s_id, pwd, short_name || null], function (err) {
     if (err) {
       if (err.message.includes('UNIQUE constraint failed')) {
         return res.status(400).json({
@@ -38,7 +38,7 @@ exports.addRecom = (req, res) => {
     res.status(200).json({
       code: 200,
       msg: "资源新增成功",
-      data: { id: this.lastID, name, pan_type, link, date, s_id, pwd }
+      data: { id: this.lastID, name, pan_type, link, date, s_id, pwd, short_name: short_name || null }
     });
   });
 };
@@ -92,10 +92,10 @@ exports.getRecomDetail = (req, res) => {
 // 更新资源
 exports.updateRecom = (req, res) => {
   const { s_id } = req.params;
-  const { name, pan_type, link, date, pwd } = req.body;
+  const { name, pan_type, link, date, pwd, short_name } = req.body;
 
   // 参数校验
-  if (!name && !pan_type && !link && !date && !pwd) {
+  if (!name && !pan_type && !link && !date && !pwd && short_name === undefined) {
     return res.status(400).json({
       code: 400,
       msg: "至少传递一个要修改的字段！",
@@ -112,11 +112,12 @@ exports.updateRecom = (req, res) => {
     // 构建更新 SQL
     let updateFields = [];
     let updateParams = [];
-    if (name) { updateFields.push("name = ?"); updateParams.push(name); }
-    if (pan_type) { updateFields.push("pan_type = ?"); updateParams.push(pan_type); }
-    if (link) { updateFields.push("link = ?"); updateParams.push(link); }
-    if (date) { updateFields.push("date = ?"); updateParams.push(date); }
-    if (pwd) { updateFields.push("pwd = ?"); updateParams.push(pwd); }
+    if (name !== undefined) { updateFields.push("name = ?"); updateParams.push(name); }
+    if (pan_type !== undefined) { updateFields.push("pan_type = ?"); updateParams.push(pan_type); }
+    if (link !== undefined) { updateFields.push("link = ?"); updateParams.push(link); }
+    if (date !== undefined) { updateFields.push("date = ?"); updateParams.push(date); }
+    if (pwd !== undefined) { updateFields.push("pwd = ?"); updateParams.push(pwd); }
+    if (short_name !== undefined) { updateFields.push("short_name = ?"); updateParams.push(short_name); }
     updateParams.push(s_id);
 
     const updateSql = `UPDATE recommendation SET ${updateFields.join(', ')} WHERE s_id = ?`;
