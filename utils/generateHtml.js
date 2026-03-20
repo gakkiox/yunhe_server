@@ -21,6 +21,7 @@ async function processTemplateData() {
   const templates = [];
 
   articles.forEach(article => {
+    // 处理标签：拆分、去空格、过滤空值、限制最多3个
     const processedTags = article.tags
       ? article.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
       : [];
@@ -30,13 +31,29 @@ async function processTemplateData() {
       ...article,
       tags: limitedTags.join(',')
     };
+
     const item = {
       article: processedArticle,
       recomList: []
     };
-    for (let i = 0; i < 3; i++) {
-      const randomIndex = Math.floor(Math.random() * articles.length);
-      item.recomList.push(articles[randomIndex]);
+
+    // 核心逻辑：生成不重复的推荐列表
+    const articleCount = articles.length;
+    if (articleCount < 3) {
+      // 场景1：文章总数<3，添加3个相同的文章（取第一个）
+      const defaultArticle = articles[0] || {}; // 兜底防止空数组
+      item.recomList = Array(3).fill(defaultArticle);
+    } else {
+      // 场景2：文章总数≥3，生成3个不重复的随机文章
+      const usedIndexes = new Set(); // 记录已选的索引，避免重复
+      while (usedIndexes.size < 3) {
+        const randomIndex = Math.floor(Math.random() * articleCount);
+        // 确保索引未被使用过
+        if (!usedIndexes.has(randomIndex)) {
+          usedIndexes.add(randomIndex);
+          item.recomList.push(articles[randomIndex]);
+        }
+      }
     }
 
     templates.push(item);
