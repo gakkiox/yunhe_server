@@ -579,28 +579,30 @@
         <h2 class="section-title">你可能也喜欢</h2>
         <div class="related-cards">
             <% recomList.forEach(recom=> { %>
-
-                <div class="related-card">
-                    <div class="card-img">
-                        <img src="<%= recom.cover_image %>" alt="<%= recom.title %>">
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">
-                            <%= recom.title %>
-                        </h3>
-                        <p class="card-excerpt">
-                            <%= recom.summary %>
-                        </p>
-                        <div class="card-meta">
-                            <span><i class="fas fa-clock"></i>
-                                <%= recom.read_time %>分钟
-                            </span>
-                            <span><i class="fas fa-eye"></i>
-                                <%= (recom.view_count /1000 ).toFixed(2)%>k
-                            </span>
+                <a style="text-decoration: none;" href="/articles/<%= recom.slug %>.html" title="<%= recom.title %>">
+                    <div class="related-card">
+                        <div class="card-img">
+                            <img src="<%= recom.cover_image %>" alt="<%= recom.title %>">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <%= recom.title %>
+                            </h3>
+                            <p class="card-excerpt">
+                                <%= recom.summary %>
+                            </p>
+                            <div class="card-meta">
+                                <span><i class="fas fa-clock"></i>
+                                    <%= recom.read_time %>分钟
+                                </span>
+                                <span><i class="fas fa-eye"></i>
+                                    <%= (recom.view_count /1000 ).toFixed(2)%>k
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
+
                 <% }) %>
 
 

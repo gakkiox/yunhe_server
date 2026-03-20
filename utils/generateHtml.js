@@ -59,10 +59,10 @@ async function generateArticleHtml(templateData) {
   await generateTemplate(filePath, templatePath, templateData)
 }
 
-async function generateTemplate(filePath, templatePath, templateData) {
+async function generateTemplate(filePath, templatePath, templateData, exists = false) {
   try {
 
-    if (fs.existsSync(filePath)) {
+    if (fs.existsSync(filePath) && exists == false) {
       console.log(`⚠️ 文件已存在，跳过生成：${filePath}`);
       return;
     }
@@ -89,11 +89,11 @@ function generateDom(art) {
 async function generateIndexHtml(lis) {
   let indexPath = path.join(process.env.DIST_PATH, "/index.html");
   let templatePath = path.join(process.env.DIST_PATH, "idx.html");
-  if (process.env.NODE_ENV === 'development') {
-    templatePath = path.join(process.cwd(), "/template/index.html");
+  if (process.env.NODE_ENV !== 'production') {
+    templatePath = path.join(process.cwd(), "/template/idx.html");
   }
 
-  await generateTemplate(indexPath, templatePath, { lis })
+  await generateTemplate(indexPath, templatePath, { lis }, true)
 }
 /**
  * 生成所有文章的HTML文件

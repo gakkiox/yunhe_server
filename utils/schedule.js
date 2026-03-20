@@ -9,7 +9,7 @@ const { db } = require('../config/db');
 // 保存定时任务实例
 let exportJob = null;
 function saveDbDataToJson() {
-  let savePath = path.join( process.env.DIST_PATH, "recom_list.js");
+  let savePath = path.join(process.env.DIST_PATH, "recom_list.js");
   return new Promise((resolve, reject) => {
     const sql = "SELECT * FROM recommendation ORDER BY id DESC";
     db.all(sql, [], (err, rows) => {
@@ -47,9 +47,9 @@ function saveDbDataToJson() {
  */
 async function startExportSchedule() {
   saveDbDataToJson().catch(err => console.error('❌ 定时任务首次执行失败：', err.msg));
-  if (process.env.is_dev) {
-    await generateHtml();
-    await generateSitemap();
+  await generateHtml();
+  await generateSitemap();
+  if (process.env.is_dev == 'yes') {
     console.log("❌ 开发环境 不执行定时任务");
     return;
   }
@@ -63,6 +63,8 @@ async function startExportSchedule() {
 
     console.log('⏰ 定时任务触发：开始导出数据库数据为JSON...');
     try {
+      await generateHtml();
+      await generateSitemap();
       const result = await saveDbDataToJson();
       console.log(`✅ 定时任务执行成功：${result.msg}`);
     } catch (err) {

@@ -11,7 +11,6 @@ function generateAuthorMotto() {
     let data = fs.readFileSync(jsonPath, 'utf8');
     data = JSON.parse(data)
     let motto = data.author_mottos[Math.floor(Math.random() * data.author_mottos.length)]
-    console.log(motto)
     return motto;
   } catch (err) {
     console.error('错误：', err.message);
