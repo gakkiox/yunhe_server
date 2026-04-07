@@ -6,16 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/favicon.ico">
     <title>
-        <%= article.title %>
+        <%= article.title %> --云河搜索
     </title>
-    <meta name="keywords" content="<%= article.tags %>">
-    <meta name="description" content="<%= article.summary %>">
-    <meta name="keywords" content="<%= article.tags %>">
+    <meta name="keywords" content="<%= article.tags %>,云河搜索">
+    <meta name="description" content="<%= article.summary %>,云河搜索">
     <meta property="og:site_name" content="云河搜索 | yunhe">
     <meta property="og:title" content=" <%= article.title %>">
     <meta property="og:description" content="<%= article.summary %>">
     <meta property="og:image" content="/logo.png">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -405,9 +403,10 @@
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: start;
             flex-wrap: wrap;
             gap: 2rem;
+
         }
 
         .footer-logo {
@@ -416,11 +415,13 @@
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            flex: 0 0 auto;
         }
 
         .social-links {
             display: flex;
             gap: 1.5rem;
+            flex: 0 0 auto;
         }
 
         .social-links a {
@@ -440,6 +441,46 @@
             margin-top: 2rem;
             color: var(--text-gray);
             font-size: 0.9rem;
+        }
+
+        .site-links {
+            flex: 0 0 auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .site-links-col {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: start;
+        }
+
+        .site-links-item {
+            color: #6b7280;
+            text-decoration: none;
+            position: relative;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .site-links-item:hover {
+            color: #8b5cf6;
+        }
+
+        .site-links-item:hover::after {
+            width: 100%;
+        }
+
+        .site-links-item::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #8b5cf6;
+            transition: width 0.3s ease;
         }
 
         @media (max-width: 768px) {
@@ -472,6 +513,34 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+                /* 移动端竖向排列，居中对齐 */
+                align-items: center;
+                justify-content: center;
+            }
+
+            .footer-logo {
+                text-align: left;
+            }
+
+            .footer-logo,
+            .site-links,
+            .social-links {
+                /* 移动端每个元素占满行宽，居中 */
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .site-links {
+                display: block;
+            }
+
+            .site-links-col {
+                gap: 0px;
+            }
+
+            .social-links {
+                /* 最后一个元素去掉底部间距 */
+                margin-bottom: 0;
             }
         }
 
@@ -493,10 +562,12 @@
 
 <body>
     <nav>
-        <div class="logo">云河搜索</div>
+        <div class="logo">
+            <a href="/" title="云河搜索" style="text-decoration: none;">云河搜索</a>
+        </div>
         <div class="nav-links">
-            <a href="/">首页</a>
-            <a href="/about">关于</a>
+            <a href="/" title="云河搜索">首页</a>
+            <a target="_blank" href="https://tools.useai.sbs" title="云河工具站">云河工具站</a>
         </div>
         <div class="mobile-menu">
             <i class="fas fa-bars"></i>
@@ -611,7 +682,29 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">NEON</div>
+            <div class="footer-logo">YunHe</div>
+
+            <div class="site-links">
+                <div class="site-links-col">
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/image-compressor">图片压缩</a>
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/image-converte">图片格式转换</a>
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/base64">base64加解密</a>
+                </div>
+                <div class="site-links-col">
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/json-format">JSON格式化</a>
+
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/base64">base64加解密</a>
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/image-converte">图片格式转换</a>
+                </div>
+                <div class="site-links-col">
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/base64">base64加解密</a>
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/json-format">JSON格式化</a>
+                    <a class="site-links-item" target="_blank" href="https://tools.useai.sbs/image-converte">图片格式转换</a>
+
+                </div>
+
+            </div>
+
             <div class="social-links">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -619,8 +712,10 @@
                 <a href="#"><i class="fab fa-weixin"></i></a>
             </div>
         </div>
+
         <div class="copyright">
-            © 2024 NEON 潮流志 | 年轻就要炫酷 · 设计即态度
+            © 2026 云河搜索 | 年轻就要炫酷 · 设计即态度 | <a style="text-decoration: none;color:#6b7280;"
+                href="https://tools.useai.sbs" target="_blank">云河工具站</a>
         </div>
     </footer>
 
