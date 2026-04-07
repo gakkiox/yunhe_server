@@ -4,10 +4,11 @@ const { generateSitemap } = require('./generateSitemap');
 const fs = require('fs');
 const path = require('path');
 const { db } = require('../config/db');
-
+const { fetchAll } = require("./getSource")
 
 // 保存定时任务实例
 let exportJob = null;
+let getSourceJob = null;
 function saveDbDataToJson() {
   let savePath = path.join(process.env.DIST_PATH, "recom_list.js");
   return new Promise((resolve, reject) => {
@@ -49,6 +50,7 @@ async function startJobs() {
   saveDbDataToJson().catch(err => console.error('❌ 定时任务首次执行失败：', err.msg));
   await generateHtml();
   await generateSitemap();
+  await fetchAll();
   if (process.env.is_dev == 'yes') {
     console.log("❌ 开发环境 不执行定时任务");
     return;
@@ -73,6 +75,12 @@ async function startJobs() {
   });
 
   console.log(`✅ 定时任务已启动：每10分钟（${cronRule}）自动导出JSON`);
+
+  const cronRuleDaily = '0 0 1 * * *';
+  getSourceJob = schedule.scheduleJob(cronRuleDaily, async () => {
+    await fetchAll();
+  });
+  console.log(`✅ 每日凌晨1点定时任务已启动（${cronRuleDaily}）`);
 }
 
 /**
@@ -84,6 +92,12 @@ function stopJobs() {
     console.log('🛑 定时任务已停止');
     exportJob = null;
   }
+  // 新增：停止凌晨1点的任务
+  if (getSourceJob) {
+    getSourceJob.cancel();
+    console.log('🛑 每日凌晨1点定时任务已停止');
+    getSourceJob = null;
+  }
 }
 
-module.exports = { startJobs, stopJobs,saveDbDataToJson };
+module.exports = { startJobs, stopJobs, saveDbDataToJson };

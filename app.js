@@ -10,8 +10,9 @@ const path = require('path');
 process.env.is_dev = 'no';
 process.env.DIST_PATH = "/root/pansou_dist/dist";
 if (process.env.NODE_ENV !== 'production') {
+  console.log("开发环境")
   require('dotenv').config(); // 加载 .env 到 process.env
-  process.env.DIST_PATH = path.join(process.cwd(), '/public');
+  process.env.DIST_PATH = path.join(__dirname, '/public');
   process.env.is_dev = 'yes';
 }
 const app = express();
