@@ -15,6 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
   process.env.DIST_PATH = path.join(__dirname, '/public');
   process.env.is_dev = 'yes';
 }
+
 const app = express();
 const port = 5618;
 app.use(express.static('public'));

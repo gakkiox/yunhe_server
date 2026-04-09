@@ -5,7 +5,7 @@ window.movie_data ={
     "items": [
       {
         "rating": {
-          "count": 759342,
+          "count": 759500,
           "max": 10,
           "star_count": 4,
           "value": 8.3
@@ -25,7 +25,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1531109,
+          "count": 1531155,
           "max": 10,
           "star_count": 4,
           "value": 8.4
@@ -45,7 +45,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 490,
+          "count": 498,
           "max": 10,
           "star_count": 4.5,
           "value": 8.9
@@ -65,7 +65,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 3275671,
+          "count": 3275732,
           "max": 10,
           "star_count": 5,
           "value": 9.7
@@ -85,7 +85,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2312000,
+          "count": 2312068,
           "max": 10,
           "star_count": 4.5,
           "value": 9.3
@@ -105,7 +105,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1211424,
+          "count": 1211489,
           "max": 10,
           "star_count": 4.5,
           "value": 8.9
@@ -125,7 +125,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2529812,
+          "count": 2529864,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -145,7 +145,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1981818,
+          "count": 1981863,
           "max": 10,
           "star_count": 4.5,
           "value": 9.1
@@ -165,7 +165,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2491235,
+          "count": 2491283,
           "max": 10,
           "star_count": 5,
           "value": 9.5
@@ -185,7 +185,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2174585,
+          "count": 2174651,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -205,7 +205,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2012101,
+          "count": 2012140,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -225,7 +225,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 661134,
+          "count": 661196,
           "max": 10,
           "star_count": 4.5,
           "value": 8.5
@@ -245,7 +245,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2345703,
+          "count": 2345741,
           "max": 10,
           "star_count": 4.5,
           "value": 9
@@ -265,7 +265,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2424201,
+          "count": 2424233,
           "max": 10,
           "star_count": 5,
           "value": 9.5
@@ -285,7 +285,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2416532,
+          "count": 2416585,
           "max": 10,
           "star_count": 5,
           "value": 9.6
@@ -305,7 +305,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2546574,
+          "count": 2546616,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -325,7 +325,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2077197,
+          "count": 2077217,
           "max": 10,
           "star_count": 4,
           "value": 8.4
@@ -345,7 +345,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 557458,
+          "count": 557522,
           "max": 10,
           "star_count": 4,
           "value": 8.1
@@ -365,7 +365,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1888592,
+          "count": 1888640,
           "max": 10,
           "star_count": 4.5,
           "value": 8.9
@@ -385,7 +385,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2319339,
+          "count": 2319378,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -462,7 +462,7 @@ window.movie_data ={
     "isMockData": false
   },
   "message": "获取豆瓣高分电影榜单成功: 全部",
-  "timestamp": "2026-04-09T06:25:56.004Z"
+  "timestamp": "2026-04-09T11:04:41.501Z"
 };window.drama_data ={
   "success": true,
   "code": 0,
@@ -470,7 +470,7 @@ window.movie_data ={
     "items": [
       {
         "rating": {
-          "count": 18369,
+          "count": 19426,
           "max": 10,
           "star_count": 4,
           "value": 7.7
@@ -503,14 +503,14 @@ window.movie_data ={
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/35929169",
-        "episodes_info": "更新至27集",
+        "episodes_info": "更新至28集",
         "card_subtitle": "2026 / 中国大陆 / 剧情 / 秦榛 / 迪丽热巴 陈飞宇",
         "type": "tv",
         "id": "35929169"
       },
       {
         "rating": {
-          "count": 186040,
+          "count": 186363,
           "max": 10,
           "star_count": 3,
           "value": 6.4
@@ -570,7 +570,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 34236,
+          "count": 34722,
           "max": 10,
           "star_count": 3.5,
           "value": 7
@@ -590,7 +590,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 15684,
+          "count": 15943,
           "max": 10,
           "star_count": 4,
           "value": 7.9
@@ -610,7 +610,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 38306,
+          "count": 38471,
           "max": 10,
           "star_count": 3.5,
           "value": 6.7
@@ -643,7 +643,7 @@ window.movie_data ={
         },
         "is_new": true,
         "uri": "douban://douban.com/tv/36809858",
-        "episodes_info": "更新至5集",
+        "episodes_info": "更新至7集",
         "card_subtitle": "2026 / 中国大陆 / 剧情 古装 / 侣皓吉吉 / 李昀锐 黄杨钿甜",
         "type": "tv",
         "id": "36809858"
@@ -683,14 +683,14 @@ window.movie_data ={
         },
         "is_new": true,
         "uri": "douban://douban.com/tv/36513446",
-        "episodes_info": "更新至16集",
+        "episodes_info": "更新至18集",
         "card_subtitle": "2026 / 中国大陆 / 剧情 犯罪 / 天毅 / 井柏然 蔡文静",
         "type": "tv",
         "id": "36513446"
       },
       {
         "rating": {
-          "count": 24325,
+          "count": 24364,
           "max": 10,
           "star_count": 3,
           "value": 6.1
@@ -710,7 +710,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 147723,
+          "count": 147792,
           "max": 10,
           "star_count": 4,
           "value": 8.3
@@ -750,7 +750,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 8500,
+          "count": 8550,
           "max": 10,
           "star_count": 4,
           "value": 7.8
@@ -790,7 +790,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 114434,
+          "count": 114497,
           "max": 10,
           "star_count": 4,
           "value": 8.4
@@ -810,7 +810,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 16815,
+          "count": 16868,
           "max": 10,
           "star_count": 4.5,
           "value": 8.8
@@ -830,7 +830,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 315563,
+          "count": 315607,
           "max": 10,
           "star_count": 4,
           "value": 8.3
@@ -850,7 +850,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 46250,
+          "count": 46310,
           "max": 10,
           "star_count": 3.5,
           "value": 7.3
@@ -927,7 +927,7 @@ window.movie_data ={
     "isMockData": false
   },
   "message": "获取最近热门剧集榜单成功: 全部",
-  "timestamp": "2026-04-09T06:25:56.157Z"
+  "timestamp": "2026-04-09T11:04:41.601Z"
 };window.variety_data ={
   "success": true,
   "code": 0,
@@ -955,10 +955,10 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 0,
+          "count": 7114,
           "max": 10,
-          "star_count": 0,
-          "value": 0
+          "star_count": 3.5,
+          "value": 7
         },
         "title": "主咖和Ta的朋友们",
         "pic": {
@@ -995,7 +995,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 7015,
+          "count": 7041,
           "max": 10,
           "star_count": 4,
           "value": 7.6
@@ -1015,7 +1015,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 38804,
+          "count": 38817,
           "max": 10,
           "star_count": 4,
           "value": 8.2
@@ -1055,7 +1055,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 56249,
+          "count": 56256,
           "max": 10,
           "star_count": 3.5,
           "value": 6.6
@@ -1155,7 +1155,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 627,
+          "count": 630,
           "max": 10,
           "star_count": 3,
           "value": 5.8
@@ -1175,7 +1175,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 7704,
+          "count": 7708,
           "max": 10,
           "star_count": 4,
           "value": 8
@@ -1195,7 +1195,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 5473,
+          "count": 5475,
           "max": 10,
           "star_count": 4,
           "value": 7.7
@@ -1235,7 +1235,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 4717,
+          "count": 4721,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -1275,7 +1275,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 251,
+          "count": 252,
           "max": 10,
           "star_count": 3,
           "value": 6.1
@@ -1315,7 +1315,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 389,
+          "count": 395,
           "max": 10,
           "star_count": 4,
           "value": 7.6
@@ -1392,5 +1392,5 @@ window.movie_data ={
     "isMockData": false
   },
   "message": "获取最近热门综艺榜单成功: 全部",
-  "timestamp": "2026-04-09T06:25:56.027Z"
+  "timestamp": "2026-04-09T11:04:41.734Z"
 };

@@ -2,6 +2,7 @@ const axios = require('axios');
 const fsp = require('fs').promises;
 const fs = require('fs');
 const path = require('path');
+const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3');
 
 // 基础配置
 const base_uri = "http://72.11.150.200:37412";
@@ -10,6 +11,8 @@ const API_URLS = {
   drama: "/api/douban/tv/drama/全部",
   variety: "/api/douban/tv/variety/全部"
 };
+
+
 
 async function fetchAndSave(type) {
 
@@ -54,14 +57,19 @@ exports.fetchAll = async function () {
     getVarietyData()
   ]);
   let source_str = "";
+  let filelist = [];
   for (let type in API_URLS) {
     let filePath = path.join(process.env.DIST_PATH, `${type}_data.js`);
+    filelist.push(filePath)
     let str = await fsp.readFile(filePath, 'utf8');
     let dat = JSON.parse(str);
     await getpic(dat)
-    let str_data =   `window.${type}_data =` + JSON.stringify(dat, null, 2) + ";";
+    let str_data = `window.${type}_data =` + JSON.stringify(dat, null, 2) + ";";
     source_str += str_data;
-    await fsp.unlink(filePath);
+
+  }
+  for (let f of filelist) {
+    await fsp.unlink(f);
   }
   let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
   await fsp.writeFile(save_path, source_str, 'utf8');
@@ -91,39 +99,83 @@ async function getpic(source) {
   for (let item of source.data.items) {
     let image_url = item.pic.large;
     await getpicHandle(api, image_url)
-    item.pic.pan = `https://pan.useai.sbs/douban_pic/${image_url.split('/').pop()}`
+    item.pic.pan = `https://nfs.useai.sbs/douban_pic/${image_url.split('/').pop()}`
   }
 
 
 }
+function getEnv() {
+  // Cloudflare R2 配置
+  const R2_CONFIG = {
+    endpoint: process.env.R2_ENDPOINT || '',
+    accessKeyId: process.env.R2_ACCESS_KEY_ID || '',
+    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY || '',
+    bucketName: process.env.R2_BUCKET_NAME || '',
+    publicUrl: process.env.R2_PUBLIC_URL || ''
+  };
 
+  // 创建 S3 客户端（R2 兼容 S3 API）
+  const s3Client = new S3Client({
+    region: 'auto',
+    endpoint: R2_CONFIG.endpoint,
+    credentials: {
+      accessKeyId: R2_CONFIG.accessKeyId,
+      secretAccessKey: R2_CONFIG.secretAccessKey
+    }
+  });
+  return {
+    R2_CONFIG,
+    s3Client
+  }
+}
 async function getpicHandle(api, image_url) {
   try {
-    const res = await api.get(image_url);
-    // 定义保存路径和文件名
-    let file_name = image_url.split('/').pop();
-    // 上传至 cloudflare  R2 存储
-    let saveDirPath = path.join(process.env.DIST_PATH, "douban_pic");
-    await fsp.mkdir(saveDirPath, { recursive: true });
-    let savePath = path.join(saveDirPath, file_name);
-    if (fs.existsSync(savePath)) {
-      console.log('✅ 图片已存在，跳过下载：', savePath);
+    const fileName = image_url.split('/').pop();
+    const key = `douban_pic/${fileName}`;
+    const { R2_CONFIG, s3Client } = getEnv();
+    
+    // 检查文件是否已存在
+    try {
+      await s3Client.send(new HeadObjectCommand({
+        Bucket: R2_CONFIG.bucketName,
+        Key: key
+      }));
+      console.log(`图片已存在，跳过: ${fileName}`);
       return;
+    } catch (err) {
+      // 文件不存在，继续上传
     }
-    // 创建可写流，将响应流写入文件
-    const writer = fs.createWriteStream(savePath);
-    res.data.pipe(writer);
 
-    // 监听写入完成/错误事件
-    writer.on('finish', () => {
-      console.log('图片保存成功！路径：', savePath);
-    });
+    // 下载图片
+    const response = await api.get(image_url);
+    const chunks = [];
+    for await (const chunk of response.data) {
+      chunks.push(chunk);
+    }
+    const buffer = Buffer.concat(chunks);
 
-    writer.on('error', (err) => {
-      console.error('图片保存失败：', err);
-    });
+    // 获取文件扩展名和 Content-Type
+    const ext = path.extname(fileName).toLowerCase();
+    const contentTypeMap = {
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.png': 'image/png',
+      '.gif': 'image/gif',
+      '.webp': 'image/webp'
+    };
+    const contentType = contentTypeMap[ext] || 'image/jpeg';
 
+    // 上传到 R2
+    await s3Client.send(new PutObjectCommand({
+      Bucket: R2_CONFIG.bucketName,
+      Key: key,
+      Body: buffer,
+      ContentType: contentType,
+      ACL: 'public-read'
+    }));
+
+    console.log(`图片上传成功: ${fileName}`);
   } catch (err) {
-    console.error('请求图片失败：', err);
+    console.error('请求图片或上传失败：', err.message);
   }
 }
