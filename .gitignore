@@ -15,10 +15,17 @@ dist-ssr
 coverage
 *.local
 *.db
-
+douban_pic/
+articles/
 /cypress/videos/
 /cypress/screenshots/
-/db/data.db
+data.db
+drama_data.js
+movie_data.js
+variety_data.js
+source_data.js
+recom_data.js
+sitemap.xml
 
 # Editor directories and files
 .vscode/*

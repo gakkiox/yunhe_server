@@ -4,6 +4,7 @@
     "drama_data.js",
     "variety_data.js",
     "movie_data.js",
-    "source_data.js"
+    "source_data.js",
+    "douban_pic/*"
   ]
 }

@@ -5,7 +5,7 @@ window.movie_data ={
     "items": [
       {
         "rating": {
-          "count": 757836,
+          "count": 759342,
           "max": 10,
           "star_count": 4,
           "value": 8.3
@@ -13,7 +13,8 @@ window.movie_data ={
         "title": "疯狂动物城2",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2926605350.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2926605350.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2926605350.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2926605350.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/26817136",
@@ -24,7 +25,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1530689,
+          "count": 1531109,
           "max": 10,
           "star_count": 4,
           "value": 8.4
@@ -32,7 +33,8 @@ window.movie_data ={
         "title": "哪吒之魔童闹海",
         "pic": {
           "large": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2916323291.jpg",
-          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2916323291.jpg"
+          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2916323291.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2916323291.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/34780991",
@@ -43,7 +45,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 444,
+          "count": 490,
           "max": 10,
           "star_count": 4.5,
           "value": 8.9
@@ -51,7 +53,8 @@ window.movie_data ={
         "title": "火遮眼",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2930969868.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930969868.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930969868.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930969868.jpg"
         },
         "is_new": true,
         "uri": "douban://douban.com/movie/36877245",
@@ -62,7 +65,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 3275158,
+          "count": 3275671,
           "max": 10,
           "star_count": 5,
           "value": 9.7
@@ -70,7 +73,8 @@ window.movie_data ={
         "title": "肖申克的救赎",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p480747492.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p480747492.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/1292052",
@@ -81,7 +85,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2311452,
+          "count": 2312000,
           "max": 10,
           "star_count": 4.5,
           "value": 9.3
@@ -89,7 +93,8 @@ window.movie_data ={
         "title": "疯狂动物城",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2924128964.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2924128964.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2924128964.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2924128964.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/25662329",
@@ -100,7 +105,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1210883,
+          "count": 1211424,
           "max": 10,
           "star_count": 4.5,
           "value": 8.9
@@ -108,7 +113,8 @@ window.movie_data ={
         "title": "好东西",
         "pic": {
           "large": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2915454411.jpg",
-          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2915454411.jpg"
+          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2915454411.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2915454411.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/36154853",
@@ -119,7 +125,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2529330,
+          "count": 2529812,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -127,7 +133,8 @@ window.movie_data ={
         "title": "千与千寻",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2557573348.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2557573348.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2557573348.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/1291561",
@@ -138,7 +145,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1981302,
+          "count": 1981818,
           "max": 10,
           "star_count": 4.5,
           "value": 9.1
@@ -146,7 +153,8 @@ window.movie_data ={
         "title": "寻梦环游记",
         "pic": {
           "large": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2505426431.jpg",
-          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2505426431.jpg"
+          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2505426431.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2505426431.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/20495023",
@@ -157,7 +165,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2490774,
+          "count": 2491235,
           "max": 10,
           "star_count": 5,
           "value": 9.5
@@ -165,7 +173,8 @@ window.movie_data ={
         "title": "泰坦尼克号",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p457760035.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p457760035.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p457760035.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p457760035.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/1292722",
@@ -176,26 +185,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 660526,
-          "max": 10,
-          "star_count": 4.5,
-          "value": 8.5
-        },
-        "title": "浪浪山小妖怪",
-        "pic": {
-          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2923770138.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2923770138.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/movie/36438475",
-        "episodes_info": "",
-        "card_subtitle": "2025 / 中国大陆 / 剧情 喜剧 动画 奇幻 / 於水 / 陈子平 路扬",
-        "type": "movie",
-        "id": "36438475"
-      },
-      {
-        "rating": {
-          "count": 2174049,
+          "count": 2174585,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -203,7 +193,8 @@ window.movie_data ={
         "title": "星际穿越",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2614988097.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2614988097.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2614988097.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2614988097.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/1889243",
@@ -214,7 +205,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2011713,
+          "count": 2012101,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -222,7 +213,8 @@ window.movie_data ={
         "title": "楚门的世界",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p479682972.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p479682972.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p479682972.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p479682972.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/1292064",
@@ -233,7 +225,27 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2345386,
+          "count": 661134,
+          "max": 10,
+          "star_count": 4.5,
+          "value": 8.5
+        },
+        "title": "浪浪山小妖怪",
+        "pic": {
+          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2923770138.jpg",
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2923770138.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2923770138.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/movie/36438475",
+        "episodes_info": "",
+        "card_subtitle": "2025 / 中国大陆 / 剧情 喜剧 动画 奇幻 / 於水 / 陈子平 路扬",
+        "type": "movie",
+        "id": "36438475"
+      },
+      {
+        "rating": {
+          "count": 2345703,
           "max": 10,
           "star_count": 4.5,
           "value": 9
@@ -241,7 +253,8 @@ window.movie_data ={
         "title": "我不是药神",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2527119568.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2527119568.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2527119568.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2527119568.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/26752088",
@@ -252,26 +265,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 556862,
-          "max": 10,
-          "star_count": 4,
-          "value": 8.1
-        },
-        "title": "捕风追影",
-        "pic": {
-          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2924069675.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2924069675.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/movie/36600459",
-        "episodes_info": "",
-        "card_subtitle": "2025 / 中国大陆 中国香港 / 剧情 动作 犯罪 / 杨子 / 成龙 张子枫",
-        "type": "movie",
-        "id": "36600459"
-      },
-      {
-        "rating": {
-          "count": 2423837,
+          "count": 2424201,
           "max": 10,
           "star_count": 5,
           "value": 9.5
@@ -279,7 +273,8 @@ window.movie_data ={
         "title": "阿甘正传",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2500944103.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2500944103.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2500944103.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2500944103.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/1292720",
@@ -290,26 +285,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2546205,
-          "max": 10,
-          "star_count": 4.5,
-          "value": 9.4
-        },
-        "title": "这个杀手不太冷",
-        "pic": {
-          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2913554676.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2913554676.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/movie/1295644",
-        "episodes_info": "",
-        "card_subtitle": "1994 / 法国 美国 / 剧情 动作 犯罪 / 吕克·贝松 / 让·雷诺 娜塔莉·波特曼",
-        "type": "movie",
-        "id": "1295644"
-      },
-      {
-        "rating": {
-          "count": 2416100,
+          "count": 2416532,
           "max": 10,
           "star_count": 5,
           "value": 9.6
@@ -317,7 +293,8 @@ window.movie_data ={
         "title": "霸王别姬",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2911205318.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2911205318.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2911205318.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2911205318.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/1291546",
@@ -328,7 +305,27 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2077042,
+          "count": 2546574,
+          "max": 10,
+          "star_count": 4.5,
+          "value": 9.4
+        },
+        "title": "这个杀手不太冷",
+        "pic": {
+          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2913554676.jpg",
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2913554676.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2913554676.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/movie/1295644",
+        "episodes_info": "",
+        "card_subtitle": "1994 / 法国 美国 / 剧情 动作 犯罪 / 吕克·贝松 / 让·雷诺 娜塔莉·波特曼",
+        "type": "movie",
+        "id": "1295644"
+      },
+      {
+        "rating": {
+          "count": 2077197,
           "max": 10,
           "star_count": 4,
           "value": 8.4
@@ -336,7 +333,8 @@ window.movie_data ={
         "title": "哪吒之魔童降世",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2563780504.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2563780504.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2563780504.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/26794435",
@@ -347,7 +345,27 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 1888260,
+          "count": 557458,
+          "max": 10,
+          "star_count": 4,
+          "value": 8.1
+        },
+        "title": "捕风追影",
+        "pic": {
+          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2924069675.jpg",
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2924069675.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2924069675.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/movie/36600459",
+        "episodes_info": "",
+        "card_subtitle": "2025 / 中国大陆 中国香港 / 剧情 动作 犯罪 / 杨子 / 成龙 张子枫",
+        "type": "movie",
+        "id": "36600459"
+      },
+      {
+        "rating": {
+          "count": 1888592,
           "max": 10,
           "star_count": 4.5,
           "value": 8.9
@@ -355,7 +373,8 @@ window.movie_data ={
         "title": "绿皮书",
         "pic": {
           "large": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2531065411.jpg",
-          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2531065411.jpg"
+          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2531065411.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2531065411.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/27060077",
@@ -366,7 +385,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 2318936,
+          "count": 2319339,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -374,7 +393,8 @@ window.movie_data ={
         "title": "盗梦空间",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p513344864.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p513344864.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/movie/3541415",
@@ -442,7 +462,7 @@ window.movie_data ={
     "isMockData": false
   },
   "message": "获取豆瓣高分电影榜单成功: 全部",
-  "timestamp": "2026-04-07T09:14:04.538Z"
+  "timestamp": "2026-04-09T06:25:56.004Z"
 };window.drama_data ={
   "success": true,
   "code": 0,
@@ -450,15 +470,56 @@ window.movie_data ={
     "items": [
       {
         "rating": {
-          "count": 182586,
+          "count": 18369,
           "max": 10,
-          "star_count": 3.5,
-          "value": 6.5
+          "star_count": 4,
+          "value": 7.7
+        },
+        "title": "危险关系",
+        "pic": {
+          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2931068376.jpg",
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931068376.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931068376.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/36866390",
+        "episodes_info": "22集全",
+        "card_subtitle": "2026 / 中国大陆 / 剧情 / 薛晓路 / 孙俪 吴慷仁",
+        "type": "tv",
+        "id": "36866390"
+      },
+      {
+        "rating": {
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
+        "title": "白日提灯",
+        "pic": {
+          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931083850.jpg",
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931083850.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931083850.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/35929169",
+        "episodes_info": "更新至27集",
+        "card_subtitle": "2026 / 中国大陆 / 剧情 / 秦榛 / 迪丽热巴 陈飞宇",
+        "type": "tv",
+        "id": "35929169"
+      },
+      {
+        "rating": {
+          "count": 186040,
+          "max": 10,
+          "star_count": 3,
+          "value": 6.4
         },
         "title": "逐玉",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2920718637.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2920718637.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2920718637.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2920718637.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/36554061",
@@ -474,52 +535,15 @@ window.movie_data ={
           "star_count": 0,
           "value": 0
         },
-        "title": "白日提灯",
-        "pic": {
-          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931083850.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931083850.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/35929169",
-        "episodes_info": "更新至23集",
-        "card_subtitle": "2026 / 中国大陆 / 剧情 / 秦榛 / 迪丽热巴 陈飞宇",
-        "type": "tv",
-        "id": "35929169"
-      },
-      {
-        "rating": {
-          "count": 0,
-          "max": 10,
-          "star_count": 0,
-          "value": 0
-        },
-        "title": "月鳞绮纪",
-        "pic": {
-          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931176978.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931176978.jpg"
-        },
-        "is_new": true,
-        "uri": "douban://douban.com/tv/36640236",
-        "episodes_info": "更新至15集",
-        "card_subtitle": "2026 / 中国大陆 / 剧情 爱情 奇幻 / 陆觉 / 鞠婧祎 曾舜晞",
-        "type": "tv",
-        "id": "36640236"
-      },
-      {
-        "rating": {
-          "count": 0,
-          "max": 10,
-          "star_count": 0,
-          "value": 0
-        },
         "title": "家事法庭",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2930951512.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930951512.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930951512.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930951512.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/35805716",
-        "episodes_info": "更新至18集",
+        "episodes_info": "26集全",
         "card_subtitle": "2026 / 中国大陆 / 剧情 犯罪 / 谢东燊 / 龚俊 任敏",
         "type": "tv",
         "id": "35805716"
@@ -531,21 +555,22 @@ window.movie_data ={
           "star_count": 0,
           "value": 0
         },
-        "title": "危险关系",
+        "title": "月鳞绮纪",
         "pic": {
-          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2931068376.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931068376.jpg"
+          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931176978.jpg",
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931176978.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931176978.jpg"
         },
-        "is_new": true,
-        "uri": "douban://douban.com/tv/36866390",
-        "episodes_info": "更新至16集",
-        "card_subtitle": "2026 / 中国大陆 / 剧情 / 薛晓路 / 孙俪 吴慷仁",
+        "is_new": false,
+        "uri": "douban://douban.com/tv/36640236",
+        "episodes_info": "更新至17集",
+        "card_subtitle": "2026 / 中国大陆 / 剧情 爱情 奇幻 / 陆觉 / 鞠婧祎 曾舜晞",
         "type": "tv",
-        "id": "36866390"
+        "id": "36640236"
       },
       {
         "rating": {
-          "count": 31897,
+          "count": 34236,
           "max": 10,
           "star_count": 3.5,
           "value": 7
@@ -553,7 +578,8 @@ window.movie_data ={
         "title": "隐身的名字",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2930870340.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930870340.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930870340.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930870340.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/36449912",
@@ -564,7 +590,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 13889,
+          "count": 15684,
           "max": 10,
           "star_count": 4,
           "value": 7.9
@@ -572,18 +598,19 @@ window.movie_data ={
         "title": "正义女神",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2930670896.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930670896.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930670896.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930670896.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37070283",
-        "episodes_info": "更新至23集",
+        "episodes_info": "25集全",
         "card_subtitle": "2026 / 中国香港 中国大陆 / 剧情 / 钟澍佳 / 佘诗曼 谭耀文",
         "type": "tv",
         "id": "37070283"
       },
       {
         "rating": {
-          "count": 36996,
+          "count": 38306,
           "max": 10,
           "star_count": 3.5,
           "value": 6.7
@@ -591,7 +618,8 @@ window.movie_data ={
         "title": "你好1983",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931005230.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931005230.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931005230.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931005230.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37066824",
@@ -602,7 +630,67 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 23655,
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
+        "title": "冰湖重生",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2931400663.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2931400663.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931400663.jpg"
+        },
+        "is_new": true,
+        "uri": "douban://douban.com/tv/36809858",
+        "episodes_info": "更新至5集",
+        "card_subtitle": "2026 / 中国大陆 / 剧情 古装 / 侣皓吉吉 / 李昀锐 黄杨钿甜",
+        "type": "tv",
+        "id": "36809858"
+      },
+      {
+        "rating": {
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
+        "title": "黑袍纠察队 第五季",
+        "pic": {
+          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2930448310.jpg",
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930448310.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930448310.jpg"
+        },
+        "is_new": true,
+        "uri": "douban://douban.com/tv/36343491",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 美国 / 剧情 喜剧 动作 科幻 犯罪 / 菲利浦·斯格里西亚 莎娜·斯坦 / 卡尔·厄本 杰克·奎德",
+        "type": "tv",
+        "id": "36343491"
+      },
+      {
+        "rating": {
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
+        "title": "钢铁森林",
+        "pic": {
+          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2931233535.jpg",
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931233535.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931233535.jpg"
+        },
+        "is_new": true,
+        "uri": "douban://douban.com/tv/36513446",
+        "episodes_info": "更新至16集",
+        "card_subtitle": "2026 / 中国大陆 / 剧情 犯罪 / 天毅 / 井柏然 蔡文静",
+        "type": "tv",
+        "id": "36513446"
+      },
+      {
+        "rating": {
+          "count": 24325,
           "max": 10,
           "star_count": 3,
           "value": 6.1
@@ -610,7 +698,8 @@ window.movie_data ={
         "title": "冬去春来",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2930950363.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930950363.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930950363.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930950363.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37071311",
@@ -621,26 +710,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 7834,
-          "max": 10,
-          "star_count": 4,
-          "value": 7.8
-        },
-        "title": "在你灿烂的季节",
-        "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929786343.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929786343.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/36544608",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 韩国 / 剧情 爱情 / 郑尚熙 金英载(김영재) / 李圣经 蔡钟协",
-        "type": "tv",
-        "id": "36544608"
-      },
-      {
-        "rating": {
-          "count": 146785,
+          "count": 147723,
           "max": 10,
           "star_count": 4,
           "value": 8.3
@@ -648,7 +718,8 @@ window.movie_data ={
         "title": "太平年",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2926587194.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2926587194.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2926587194.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2926587194.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/36317421",
@@ -664,17 +735,38 @@ window.movie_data ={
           "star_count": 0,
           "value": 0
         },
-        "title": "钢铁森林",
+        "title": "你是迟来的欢喜",
         "pic": {
-          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2931233535.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931233535.jpg"
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2926575497.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2926575497.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2926575497.jpg"
         },
-        "is_new": true,
-        "uri": "douban://douban.com/tv/36513446",
-        "episodes_info": "更新至12集",
-        "card_subtitle": "2026 / 中国大陆 / 剧情 犯罪 / 天毅 / 井柏然 蔡文静",
+        "is_new": false,
+        "uri": "douban://douban.com/tv/35897502",
+        "episodes_info": "更新至25集",
+        "card_subtitle": "2026 / 中国大陆 / 爱情 / 刘栋 / 魏哲鸣 郑合惠子",
         "type": "tv",
-        "id": "36513446"
+        "id": "35897502"
+      },
+      {
+        "rating": {
+          "count": 8500,
+          "max": 10,
+          "star_count": 4,
+          "value": 7.8
+        },
+        "title": "在你灿烂的季节",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929786343.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929786343.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929786343.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/36544608",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 韩国 / 剧情 爱情 / 郑尚熙 金英载(김영재) / 李圣经 蔡钟协",
+        "type": "tv",
+        "id": "36544608"
       },
       {
         "rating": {
@@ -683,40 +775,22 @@ window.movie_data ={
           "star_count": 0,
           "value": 0
         },
-        "title": "你是迟来的欢喜",
+        "title": "八千里路云和月",
         "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2926575497.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2926575497.jpg"
+          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2925528039.jpg",
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2925528039.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2925528039.jpg"
         },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/35897502",
-        "episodes_info": "更新至23集",
-        "card_subtitle": "2026 / 中国大陆 / 爱情 / 刘栋 / 魏哲鸣 郑合惠子",
+        "is_new": true,
+        "uri": "douban://douban.com/tv/33371937",
+        "episodes_info": "更新至6集",
+        "card_subtitle": "2026 / 中国大陆 / 剧情 历史 战争 / 张永新 / 王阳 万茜",
         "type": "tv",
-        "id": "35897502"
+        "id": "33371937"
       },
       {
         "rating": {
-          "count": 16225,
-          "max": 10,
-          "star_count": 4.5,
-          "value": 8.8
-        },
-        "title": "咒术回战 第三季",
-        "pic": {
-          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2928402160.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2928402160.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/36714178",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 日本 / 动作 动画 奇幻 / 御所园翔太 / 榎木淳弥 内田雄马",
-        "type": "tv",
-        "id": "36714178"
-      },
-      {
-        "rating": {
-          "count": 113863,
+          "count": 114434,
           "max": 10,
           "star_count": 4,
           "value": 8.4
@@ -724,7 +798,8 @@ window.movie_data ={
         "title": "爱情怎么翻译？",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928736672.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2928736672.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2928736672.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2928736672.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/36363991",
@@ -735,7 +810,27 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 315060,
+          "count": 16815,
+          "max": 10,
+          "star_count": 4.5,
+          "value": 8.8
+        },
+        "title": "咒术回战 第三季",
+        "pic": {
+          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2928402160.jpg",
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2928402160.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2928402160.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/36714178",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 日本 / 动作 动画 奇幻 / 御所园翔太 / 榎木淳弥 内田雄马",
+        "type": "tv",
+        "id": "36714178"
+      },
+      {
+        "rating": {
+          "count": 315563,
           "max": 10,
           "star_count": 4,
           "value": 8.3
@@ -743,7 +838,8 @@ window.movie_data ={
         "title": "生命树",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2929427616.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2929427616.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2929427616.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929427616.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/35424715",
@@ -754,45 +850,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 79163,
-          "max": 10,
-          "star_count": 3.5,
-          "value": 7.2
-        },
-        "title": "成何体统",
-        "pic": {
-          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2929508444.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2929508444.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/36514978",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 中国大陆 / 喜剧 爱情 古装 / 刘海波 王莉 / 王楚然 丞磊",
-        "type": "tv",
-        "id": "36514978"
-      },
-      {
-        "rating": {
-          "count": 12611,
-          "max": 10,
-          "star_count": 4.5,
-          "value": 9
-        },
-        "title": "葬送的芙莉莲 第二季",
-        "pic": {
-          "large": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2925567021.jpg",
-          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2925567021.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/36829083",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 日本 / 动画 奇幻 冒险 / 北川朋哉 / 种崎敦美 市之濑加那",
-        "type": "tv",
-        "id": "36829083"
-      },
-      {
-        "rating": {
-          "count": 45784,
+          "count": 46250,
           "max": 10,
           "star_count": 3.5,
           "value": 7.3
@@ -800,7 +858,8 @@ window.movie_data ={
         "title": "除恶",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2930022669.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930022669.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930022669.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930022669.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/36566053",
@@ -808,28 +867,9 @@ window.movie_data ={
         "card_subtitle": "2026 / 中国大陆 / 剧情 悬疑 犯罪 / 滕华涛 / 任素汐 王骁",
         "type": "tv",
         "id": "36566053"
-      },
-      {
-        "rating": {
-          "count": 57682,
-          "max": 10,
-          "star_count": 3.5,
-          "value": 7.3
-        },
-        "title": "纯真年代的爱情",
-        "pic": {
-          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2930085518.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930085518.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/35943650",
-        "episodes_info": "更新至25集",
-        "card_subtitle": "2026 / 中国大陆 / 剧情 爱情 / 陈畅 / 陈飞宇 孙千",
-        "type": "tv",
-        "id": "35943650"
       }
     ],
-    "total": 298,
+    "total": 313,
     "start": 0,
     "limit": 20,
     "category": "tv",
@@ -887,7 +927,7 @@ window.movie_data ={
     "isMockData": false
   },
   "message": "获取最近热门剧集榜单成功: 全部",
-  "timestamp": "2026-04-07T09:14:04.360Z"
+  "timestamp": "2026-04-09T06:25:56.157Z"
 };window.variety_data ={
   "success": true,
   "code": 0,
@@ -903,7 +943,8 @@ window.movie_data ={
         "title": "乘风2026",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931284369.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931284369.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931284369.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931284369.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37816789",
@@ -922,7 +963,8 @@ window.movie_data ={
         "title": "主咖和Ta的朋友们",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929200417.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929200417.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929200417.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929200417.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37526318",
@@ -941,7 +983,8 @@ window.movie_data ={
         "title": "哈哈哈哈哈 第六季",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2931360954.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931360954.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931360954.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931360954.jpg"
         },
         "is_new": true,
         "uri": "douban://douban.com/tv/37561228",
@@ -952,7 +995,27 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 38679,
+          "count": 7015,
+          "max": 10,
+          "star_count": 4,
+          "value": 7.6
+        },
+        "title": "大侦探 第十一季",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929826097.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929826097.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929826097.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/37561280",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 晏吉 莫乃珊 / 何炅 张若昀",
+        "type": "tv",
+        "id": "37561280"
+      },
+      {
+        "rating": {
+          "count": 38804,
           "max": 10,
           "star_count": 4,
           "value": 8.2
@@ -960,7 +1023,8 @@ window.movie_data ={
         "title": "现在就出发 第三季",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2926188714.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2926188714.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2926188714.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2926188714.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37407388",
@@ -979,7 +1043,8 @@ window.movie_data ={
         "title": "魔力歌先生",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2930917898.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930917898.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2930917898.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930917898.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37817273",
@@ -990,45 +1055,7 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 6848,
-          "max": 10,
-          "star_count": 4,
-          "value": 7.6
-        },
-        "title": "大侦探 第十一季",
-        "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929826097.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929826097.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/37561280",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 晏吉 莫乃珊 / 何炅 张若昀",
-        "type": "tv",
-        "id": "37561280"
-      },
-      {
-        "rating": {
-          "count": 0,
-          "max": 10,
-          "star_count": 0,
-          "value": 0
-        },
-        "title": "无限超越班 第四季",
-        "pic": {
-          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2931361735.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931361735.jpg"
-        },
-        "is_new": true,
-        "uri": "douban://douban.com/tv/37824707",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 吴彤 / 曾志伟 郝蕾",
-        "type": "tv",
-        "id": "37824707"
-      },
-      {
-        "rating": {
-          "count": 56163,
+          "count": 56249,
           "max": 10,
           "star_count": 3.5,
           "value": 6.6
@@ -1036,7 +1063,8 @@ window.movie_data ={
         "title": "喜人奇妙夜2",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2925624174.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2925624174.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2925624174.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2925624174.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37388213",
@@ -1052,10 +1080,71 @@ window.movie_data ={
           "star_count": 0,
           "value": 0
         },
+        "title": "亲爱的客栈2026",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2930297087.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930297087.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930297087.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/37814621",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 王鹤棣 秦岚",
+        "type": "tv",
+        "id": "37814621"
+      },
+      {
+        "rating": {
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
+        "title": "无限超越班 第四季",
+        "pic": {
+          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2931361735.jpg",
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2931361735.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2931361735.jpg"
+        },
+        "is_new": true,
+        "uri": "douban://douban.com/tv/37824707",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 吴彤 / 曾志伟 郝蕾",
+        "type": "tv",
+        "id": "37824707"
+      },
+      {
+        "rating": {
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
+        "title": "奋斗吧人生-演员篇",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929827733.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929827733.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929827733.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/38243034",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 陈赫 邓超",
+        "type": "tv",
+        "id": "38243034"
+      },
+      {
+        "rating": {
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
         "title": "最强大脑 第十三季",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2928933336.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2928933336.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2928933336.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2928933336.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/38194730",
@@ -1066,26 +1155,47 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 0,
+          "count": 627,
           "max": 10,
-          "star_count": 0,
-          "value": 0
+          "star_count": 3,
+          "value": 5.8
         },
-        "title": "今夜喜友秀",
+        "title": "给我钱 第12季",
         "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2930351237.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930351237.jpg"
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928156102.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2928156102.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2928156102.jpg"
         },
         "is_new": false,
-        "uri": "douban://douban.com/tv/37862629",
+        "uri": "douban://douban.com/tv/36884434",
         "episodes_info": "",
-        "card_subtitle": "2026 / 中国大陆 / 脱口秀 / 大张伟 付航",
+        "card_subtitle": "2026 / 韩国 / 音乐 真人秀 / 禹智皓 申效涉",
         "type": "tv",
-        "id": "37862629"
+        "id": "36884434"
       },
       {
         "rating": {
-          "count": 5430,
+          "count": 7704,
+          "max": 10,
+          "star_count": 4,
+          "value": 8
+        },
+        "title": "单身即地狱 第五季",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928771143.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2928771143.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2928771143.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/37233693",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 韩国 / 爱情 真人秀 / 金在元 / 洪真庆 李多熙",
+        "type": "tv",
+        "id": "37233693"
+      },
+      {
+        "rating": {
+          "count": 5473,
           "max": 10,
           "star_count": 4,
           "value": 7.7
@@ -1093,7 +1203,8 @@ window.movie_data ={
         "title": "天机试炼场",
         "pic": {
           "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929886202.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929886202.jpg"
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929886202.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929886202.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37507947",
@@ -1109,97 +1220,22 @@ window.movie_data ={
           "star_count": 0,
           "value": 0
         },
-        "title": "亲爱的客栈2026",
+        "title": "今夜喜友秀",
         "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2930297087.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930297087.jpg"
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2930351237.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2930351237.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930351237.jpg"
         },
         "is_new": false,
-        "uri": "douban://douban.com/tv/37814621",
+        "uri": "douban://douban.com/tv/37862629",
         "episodes_info": "",
-        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 王鹤棣 秦岚",
+        "card_subtitle": "2026 / 中国大陆 / 脱口秀 / 大张伟 付航",
         "type": "tv",
-        "id": "37814621"
+        "id": "37862629"
       },
       {
         "rating": {
-          "count": 7655,
-          "max": 10,
-          "star_count": 4,
-          "value": 8
-        },
-        "title": "单身即地狱 第五季",
-        "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928771143.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2928771143.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/37233693",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 韩国 / 爱情 真人秀 / 金在元 / 洪真庆 李多熙",
-        "type": "tv",
-        "id": "37233693"
-      },
-      {
-        "rating": {
-          "count": 0,
-          "max": 10,
-          "star_count": 0,
-          "value": 0
-        },
-        "title": "不好笑就露宿街头",
-        "pic": {
-          "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931234339.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2931234339.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/37823543",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 赵露思 大张伟",
-        "type": "tv",
-        "id": "37823543"
-      },
-      {
-        "rating": {
-          "count": 575,
-          "max": 10,
-          "star_count": 3,
-          "value": 5.8
-        },
-        "title": "给我钱 第12季",
-        "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928156102.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2928156102.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/36884434",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 韩国 / 音乐 真人秀 / 禹智皓 申效涉",
-        "type": "tv",
-        "id": "36884434"
-      },
-      {
-        "rating": {
-          "count": 0,
-          "max": 10,
-          "star_count": 0,
-          "value": 0
-        },
-        "title": "奋斗吧人生-演员篇",
-        "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929827733.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929827733.jpg"
-        },
-        "is_new": true,
-        "uri": "douban://douban.com/tv/38243034",
-        "episodes_info": "",
-        "card_subtitle": "2026 / 中国大陆 / 真人秀 / 陈赫 邓超",
-        "type": "tv",
-        "id": "38243034"
-      },
-      {
-        "rating": {
-          "count": 4672,
+          "count": 4717,
           "max": 10,
           "star_count": 4.5,
           "value": 9.4
@@ -1207,7 +1243,8 @@ window.movie_data ={
         "title": "四个愿望",
         "pic": {
           "large": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2929613288.jpg",
-          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2929613288.jpg"
+          "normal": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2929613288.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929613288.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/38188936",
@@ -1218,7 +1255,67 @@ window.movie_data ={
       },
       {
         "rating": {
-          "count": 373,
+          "count": 328,
+          "max": 10,
+          "star_count": 4.5,
+          "value": 8.7
+        },
+        "title": "小镇魔发师",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928981302.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2928981302.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2928981302.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/37835647",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 韩国 / 真人秀 / 朴宝剑 李相二",
+        "type": "tv",
+        "id": "37835647"
+      },
+      {
+        "rating": {
+          "count": 251,
+          "max": 10,
+          "star_count": 3,
+          "value": 6.1
+        },
+        "title": "天下烘焙",
+        "pic": {
+          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2929000083.jpg",
+          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2929000083.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929000083.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/37746102",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 韩国 / 真人秀 / 金时中 尹世英 / 李多熙 卢熙英",
+        "type": "tv",
+        "id": "37746102"
+      },
+      {
+        "rating": {
+          "count": 0,
+          "max": 10,
+          "star_count": 0,
+          "value": 0
+        },
+        "title": "十三邀 第九季",
+        "pic": {
+          "large": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2929359541.jpg",
+          "normal": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2929359541.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2929359541.jpg"
+        },
+        "is_new": false,
+        "uri": "douban://douban.com/tv/37090480",
+        "episodes_info": "",
+        "card_subtitle": "2026 / 中国大陆 / 纪录片 历史 脱口秀 / 徐婵娟 / 许知远",
+        "type": "tv",
+        "id": "37090480"
+      },
+      {
+        "rating": {
+          "count": 389,
           "max": 10,
           "star_count": 4,
           "value": 7.6
@@ -1226,7 +1323,8 @@ window.movie_data ={
         "title": "李瑞镇的达拉达拉",
         "pic": {
           "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2930600366.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930600366.jpg"
+          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2930600366.jpg",
+          "pan": "https://pan.useai.sbs/douban_pic/p2930600366.jpg"
         },
         "is_new": false,
         "uri": "douban://douban.com/tv/37523014",
@@ -1234,47 +1332,9 @@ window.movie_data ={
         "card_subtitle": "2026 / 韩国 / 真人秀 / 罗暎锡 金艺瑟 / 李瑞镇 罗暎锡",
         "type": "tv",
         "id": "37523014"
-      },
-      {
-        "rating": {
-          "count": 7115,
-          "max": 10,
-          "star_count": 4,
-          "value": 7.9
-        },
-        "title": "黑白厨师：料理阶级战争 第二季",
-        "pic": {
-          "large": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2927228427.jpg",
-          "normal": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2927228427.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/37076666",
-        "episodes_info": "",
-        "card_subtitle": "2025 / 韩国 / 真人秀 / 金学慜 金银芝 / 白种元 安成宰",
-        "type": "tv",
-        "id": "37076666"
-      },
-      {
-        "rating": {
-          "count": 5906,
-          "max": 10,
-          "star_count": 4.5,
-          "value": 9.1
-        },
-        "title": "犯罪现场 Zero",
-        "pic": {
-          "large": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2925044105.jpg",
-          "normal": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2925044105.jpg"
-        },
-        "is_new": false,
-        "uri": "douban://douban.com/tv/36598430",
-        "episodes_info": "",
-        "card_subtitle": "2025 / 韩国 / 悬疑 犯罪 真人秀 / 尹贤俊 / 张镇 朴芝润",
-        "type": "tv",
-        "id": "36598430"
       }
     ],
-    "total": 55,
+    "total": 56,
     "start": 0,
     "limit": 20,
     "category": "show",
@@ -1332,5 +1392,5 @@ window.movie_data ={
     "isMockData": false
   },
   "message": "获取最近热门综艺榜单成功: 全部",
-  "timestamp": "2026-04-07T09:14:04.152Z"
+  "timestamp": "2026-04-09T06:25:56.027Z"
 };

@@ -1,5 +1,6 @@
 const axios = require('axios');
-const fs = require('fs').promises;
+const fsp = require('fs').promises;
+const fs = require('fs');
 const path = require('path');
 
 // 基础配置
@@ -23,12 +24,11 @@ async function fetchAndSave(type) {
 
     const response = await axios.get(url, { timeout: 15000 });
     const data = response.data;
-
+    await getpic(data);
     const fileName = `${type}_data.js`;
     const filePath = path.join(process.env.DIST_PATH, fileName);
     let str_data = JSON.stringify(data, null, 2);
-    let td = `window.${type}_data =` +  str_data + ";"; 
-    await fs.writeFile(filePath, td, 'utf8');
+    await fsp.writeFile(filePath, str_data, 'utf8');
 
     console.log(`✅ ${type} 数据保存成功：${filePath}`);
     return { success: true, type, filePath };
@@ -38,7 +38,63 @@ async function fetchAndSave(type) {
     return { success: false, type, error: error.message };
   }
 }
+async function getpicHandle(api, image_url) {
+  try {
+    const res = await api.get(image_url);
+    // 定义保存路径和文件名
+    let file_name = image_url.split('/').pop();
+    let saveDirPath = path.join(process.env.DIST_PATH, "douban_pic");
+    await fsp.mkdir(saveDirPath, { recursive: true });
+    let savePath = path.join(saveDirPath, file_name);
+    if (fs.existsSync(savePath)) {
+      console.log('✅ 图片已存在，跳过下载：', savePath);
+      return;
+    }
+    // 创建可写流，将响应流写入文件
+    const writer = fs.createWriteStream(savePath);
+    res.data.pipe(writer);
 
+    // 监听写入完成/错误事件
+    writer.on('finish', () => {
+      console.log('图片保存成功！路径：', savePath);
+    });
+
+    writer.on('error', (err) => {
+      console.error('图片保存失败：', err);
+    });
+
+  } catch (err) {
+    console.error('请求图片失败：', err);
+  }
+}
+async function getpic(source) {
+
+  // 修正 baseURL 错误（原代码中 this 指向问题），此处直接在请求时指定完整 URL，故可设为空
+  const api = axios.create({
+    baseURL: '',
+    timeout: 30000,
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1',
+      'Referer': 'https://m.douban.com/',
+      'Accept': 'application/json, text/plain, */*',
+      'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'Sec-Fetch-Dest': 'empty',
+      'Sec-Fetch-Mode': 'cors',
+      'Sec-Fetch-Site': 'same-origin'
+    },
+    // 关键：指定响应类型为二进制流，否则会乱码
+    responseType: 'stream'
+  })
+  for (let item of source.data.items) {
+    let image_url = item.pic.large;
+    await getpicHandle(api, image_url)
+    item.pic.pan = `https://pan.useai.sbs/douban_pic/${image_url.split('/').pop()}`
+  }
+
+
+}
 // 三个专用方法
 const getMovieData = () => fetchAndSave('movie');
 const getDramaData = () => fetchAndSave('drama');
@@ -57,11 +113,12 @@ exports.fetchAll = async function () {
   let source_str = "";
   for (let type in API_URLS) {
     let filePath = path.join(process.env.DIST_PATH, `${type}_data.js`);
-    let str = await fs.readFile(filePath, 'utf8')
-    source_str += str;
-    await fs.unlink(filePath);
+    let str = await fsp.readFile(filePath, 'utf8');
+    let str_data =   `window.${type}_data =` + str + ";";
+    source_str += str_data;
+    // await fsp.unlink(filePath);
   }
   let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
-  await fs.writeFile(save_path, source_str, 'utf8');
+  await fsp.writeFile(save_path, source_str, 'utf8');
   console.log('\n🎉 全部任务执行完成');
 }
