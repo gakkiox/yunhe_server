@@ -24,7 +24,6 @@ async function fetchAndSave(type) {
 
     const response = await axios.get(url, { timeout: 15000 });
     const data = response.data;
-    await getpic(data);
     const fileName = `${type}_data.js`;
     const filePath = path.join(process.env.DIST_PATH, fileName);
     let str_data = JSON.stringify(data, null, 2);
@@ -38,35 +37,37 @@ async function fetchAndSave(type) {
     return { success: false, type, error: error.message };
   }
 }
-async function getpicHandle(api, image_url) {
-  try {
-    const res = await api.get(image_url);
-    // 定义保存路径和文件名
-    let file_name = image_url.split('/').pop();
-    let saveDirPath = path.join(process.env.DIST_PATH, "douban_pic");
-    await fsp.mkdir(saveDirPath, { recursive: true });
-    let savePath = path.join(saveDirPath, file_name);
-    if (fs.existsSync(savePath)) {
-      console.log('✅ 图片已存在，跳过下载：', savePath);
-      return;
-    }
-    // 创建可写流，将响应流写入文件
-    const writer = fs.createWriteStream(savePath);
-    res.data.pipe(writer);
 
-    // 监听写入完成/错误事件
-    writer.on('finish', () => {
-      console.log('图片保存成功！路径：', savePath);
-    });
+// 三个专用方法
+const getMovieData = () => fetchAndSave('movie');
+const getDramaData = () => fetchAndSave('drama');
+const getVarietyData = () => fetchAndSave('variety');
 
-    writer.on('error', (err) => {
-      console.error('图片保存失败：', err);
-    });
-
-  } catch (err) {
-    console.error('请求图片失败：', err);
+/**
+ * 一次性抓取所有数据
+ */
+exports.fetchAll = async function () {
+  console.log('🚀 开始批量抓取豆瓣数据...\n');
+  await Promise.all([
+    getMovieData(),
+    getDramaData(),
+    getVarietyData()
+  ]);
+  let source_str = "";
+  for (let type in API_URLS) {
+    let filePath = path.join(process.env.DIST_PATH, `${type}_data.js`);
+    let str = await fsp.readFile(filePath, 'utf8');
+    let dat = JSON.parse(str);
+    await getpic(dat)
+    let str_data =   `window.${type}_data =` + JSON.stringify(dat, null, 2) + ";";
+    source_str += str_data;
+    await fsp.unlink(filePath);
   }
+  let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
+  await fsp.writeFile(save_path, source_str, 'utf8');
+  console.log('\n🎉 全部任务执行完成');
 }
+
 async function getpic(source) {
 
   // 修正 baseURL 错误（原代码中 this 指向问题），此处直接在请求时指定完整 URL，故可设为空
@@ -95,30 +96,34 @@ async function getpic(source) {
 
 
 }
-// 三个专用方法
-const getMovieData = () => fetchAndSave('movie');
-const getDramaData = () => fetchAndSave('drama');
-const getVarietyData = () => fetchAndSave('variety');
 
-/**
- * 一次性抓取所有数据
- */
-exports.fetchAll = async function () {
-  console.log('🚀 开始批量抓取豆瓣数据...\n');
-  await Promise.all([
-    getMovieData(),
-    getDramaData(),
-    getVarietyData()
-  ]);
-  let source_str = "";
-  for (let type in API_URLS) {
-    let filePath = path.join(process.env.DIST_PATH, `${type}_data.js`);
-    let str = await fsp.readFile(filePath, 'utf8');
-    let str_data =   `window.${type}_data =` + str + ";";
-    source_str += str_data;
-    // await fsp.unlink(filePath);
+async function getpicHandle(api, image_url) {
+  try {
+    const res = await api.get(image_url);
+    // 定义保存路径和文件名
+    let file_name = image_url.split('/').pop();
+    // 上传至 cloudflare  R2 存储
+    let saveDirPath = path.join(process.env.DIST_PATH, "douban_pic");
+    await fsp.mkdir(saveDirPath, { recursive: true });
+    let savePath = path.join(saveDirPath, file_name);
+    if (fs.existsSync(savePath)) {
+      console.log('✅ 图片已存在，跳过下载：', savePath);
+      return;
+    }
+    // 创建可写流，将响应流写入文件
+    const writer = fs.createWriteStream(savePath);
+    res.data.pipe(writer);
+
+    // 监听写入完成/错误事件
+    writer.on('finish', () => {
+      console.log('图片保存成功！路径：', savePath);
+    });
+
+    writer.on('error', (err) => {
+      console.error('图片保存失败：', err);
+    });
+
+  } catch (err) {
+    console.error('请求图片失败：', err);
   }
-  let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
-  await fsp.writeFile(save_path, source_str, 'utf8');
-  console.log('\n🎉 全部任务执行完成');
 }
