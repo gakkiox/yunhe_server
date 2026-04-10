@@ -26,7 +26,7 @@ variety_data.js
 source_data.js
 recom_data.js
 sitemap.xml
-
+source_data.json
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

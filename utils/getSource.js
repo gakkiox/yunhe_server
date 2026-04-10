@@ -56,7 +56,7 @@ exports.fetchAll = async function () {
     getDramaData(),
     getVarietyData()
   ]);
-  let source_str = "";
+  let source_obj = {};
   let filelist = [];
   for (let type in API_URLS) {
     let filePath = path.join(process.env.DIST_PATH, `${type}_data.js`);
@@ -64,15 +64,13 @@ exports.fetchAll = async function () {
     let str = await fsp.readFile(filePath, 'utf8');
     let dat = JSON.parse(str);
     await getpic(dat)
-    let str_data = `window.${type}_data =` + JSON.stringify(dat, null, 2) + ";";
-    source_str += str_data;
-
+    source_obj[type] = dat
   }
   for (let f of filelist) {
     await fsp.unlink(f);
   }
-  let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
-  await fsp.writeFile(save_path, source_str, 'utf8');
+  let save_path = path.join(process.env.DIST_PATH, 'source_data.json');
+  await fsp.writeFile(save_path, JSON.stringify(source_obj, null, 2), 'utf8');
   console.log('\n🎉 全部任务执行完成');
 }
 
@@ -133,7 +131,7 @@ async function getpicHandle(api, image_url) {
     const fileName = image_url.split('/').pop();
     const key = `douban_pic/${fileName}`;
     const { R2_CONFIG, s3Client } = getEnv();
-    
+
     // 检查文件是否已存在
     try {
       await s3Client.send(new HeadObjectCommand({
