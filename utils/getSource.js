@@ -56,7 +56,7 @@ exports.fetchAll = async function () {
     getDramaData(),
     getVarietyData()
   ]);
-  let source_obj = {};
+  let source_str = "";
   let filelist = [];
   for (let type in API_URLS) {
     let filePath = path.join(process.env.DIST_PATH, `${type}_data.js`);
@@ -64,13 +64,14 @@ exports.fetchAll = async function () {
     let str = await fsp.readFile(filePath, 'utf8');
     let dat = JSON.parse(str);
     await getpic(dat)
-    source_obj[type] = dat
+    let str_data = `window.${type}_data =` + JSON.stringify(dat, null, 2) + ";";
+    source_str += str_data;
   }
   for (let f of filelist) {
     await fsp.unlink(f);
   }
-  let save_path = path.join(process.env.DIST_PATH, 'source_data.json');
-  await fsp.writeFile(save_path, JSON.stringify(source_obj, null, 2), 'utf8');
+  let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
+  await fsp.writeFile(save_path, source_str, 'utf8');
   console.log('\n🎉 全部任务执行完成');
 }
 

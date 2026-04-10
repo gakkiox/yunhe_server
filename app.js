@@ -6,12 +6,12 @@ const articleRoutes = require('./routes/article');
 const { closeDb, db, initDB } = require('./config/db');
 const { startJobs, stopJobs } = require('./utils/jobs');
 const path = require('path');
-require('dotenv').config(); // 加载 .env 到 process.env
 
 process.env.is_dev = 'no';
 process.env.DIST_PATH = "/root/pansou_dist/dist";
 if (process.env.NODE_ENV !== 'production') {
   console.log("开发环境")
+  require('dotenv').config(); // 加载 .env 到 process.env
   process.env.DIST_PATH = path.join(__dirname, '/public');
   process.env.is_dev = 'yes';
 }
@@ -32,7 +32,7 @@ app.listen(port, async () => {
   console.log(`✅ Express 服务运行在 http://localhost:${port}`);
   console.log(process.env.NODE_ENV)
   await initDB(db);
-  await startJobs();
+  await startJobs();   
 });
 
 // 进程退出时优雅关闭

@@ -5,6 +5,7 @@
     "variety_data.js",
     "movie_data.js",
     "source_data.js",
-    "douban_pic/*"
+    "douban_pic/*",
+    "source_data.json"
   ]
 }
