@@ -1,13 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+
+  <title>云河搜索-聚合网盘搜索网站</title>
+  <style>
+    .hidden {
+      position: absolute;
+      z-index: -1;
+    }
+  </style>
+  <meta name="description" content="    一站式聚合阿里云盘、夸克、百度网盘、115、迅雷等多平台资源，实时抓取公开分享链接，搜索极速、免费使用、无广告，打造纯净便捷的网盘资源搜索入口">
+  <meta name="keywords" content="网盘搜索, 阿里云盘搜索, 夸克网盘搜索, 百度网盘搜索, 115 网盘, 迅雷云盘, 资源搜索, 盘搜, PanHub，云河搜索">
+  <meta property="og:site_name" content="云河搜索 | yunhe">
+  <meta property="og:title" content="云河搜索 - 资源超丰富的聚合网盘搜索网站！">
+  <meta property="og:description"
+    content="云河搜索，是一个资源超丰富的聚合网盘资源搜索网站。云河搜索支持百度网盘搜索、阿里云盘搜索、蓝奏云搜索、天翼云盘搜索、夸克网盘搜索、迅雷云盘搜索。可以搜索影视资源、音乐资源、图片资源、电子书资源、软件资源、小说资源等等。只需要输入关键词，即可一键聚合搜索全网所有网盘资源，搜索结果直接提供网盘分享链接，大家可保存至自己的网盘或者直接下载！">
+  <meta property="og:image" content="/logo.png">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-73C1BVSC28"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-73C1BVSC28');
+  </script>
+   <%- source_data %>
+  <script type="module" crossorigin src="/assets/index-_Zk093GG.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-mYms_gB2.css">
 </head>
+
 <body>
-  <ul>
-    <%- lis %>
-  </ul>
+  <div id="app"></div>
+
+  <div class="hidden">
+    <h1>云河搜索</h1>
+    <div class="index-dedddeees">坚持做最好用的聚合网盘搜索引擎，服务你我他，深藏功与名！</div>
+    <div class="jdisdjs">
+      <div class="djidjsikk">
+        <img src="" alt="夸克网盘搜索">
+        <div>夸克网盘搜索</div>
+      </div>
+      <div class="dsdsds44">
+        <div>夸克网盘搜索</div>
+      </div>
+      <div class="djidjsi455kk">
+        <div>百度网盘搜索</div>
+      </div>
+      <div class="djidj433sikk">
+        <div> 阿里网盘搜索</div>
+      </div>
+      <div class="djidj433333sikk">
+        <div> 聚合搜索</div>
+      </div>
+      聚合搜索
+    </div>
+    <div class="list-content">
+      <div class="list-title">
+        <h2 class="active">
+          <a title="最新入库" href="/">最新入库</a>
+        </h2>
+      </div>
+      <ul>
+        <%- lis %>
+        <a href="https://tools.useai.sbs" title="云河工具站">云河工具站</a>
+        <a href="https://tools.useai.sbs/image-compressor" title="无损压缩图片，支持JPG/PNG/WebP格式">无损压缩图片，支持JPG/PNG/WebP格式</a>
+        <a href="https://tools.useai.sbs/image-converter" title="JPG、PNG、WebP、GIF格式互转">JPG、PNG、WebP、GIF格式互转</a>
+        <a href="https://tools.useai.sbs/base64" title="Base64加解密工具、编码解码操作">Base64加解密工具、编码解码操作</a>
+        <a href="https://tools.useai.sbs/json-format" title="JSON格式化工具、支持语法高亮">JSON格式化工具、支持语法高亮</a>
+      </ul>
+    </div>
+
+  </div>
+
+  
 </body>
+
 </html>

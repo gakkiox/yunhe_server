@@ -106,12 +106,16 @@ function generateDom(art) {
 async function generateIndexHtml(lis) {
   let indexPath = path.join(process.env.DIST_PATH, "/index.html");
   let templatePath = path.join(process.env.DIST_PATH, "idx.html");
+  let source_data = "kkkl";
   if (process.env.is_dev == 'yes') {
     indexPath = path.join(process.env.DIST_PATH, "/index_test.html");
     templatePath = path.join(process.cwd(), "/template/idx.html");
+  } else {
+    let sourceDataPath = path.join(process.env.DIST_PATH, "source_data.js");
+    source_data = fs.readFileSync(sourceDataPath, 'utf8');
   }
 
-  await generateTemplate(indexPath, templatePath, { lis }, true)
+  await generateTemplate(indexPath, templatePath, { lis, source_data }, true)
 }
 /**
  * 生成所有文章的HTML文件
