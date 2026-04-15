@@ -106,13 +106,11 @@ function generateDom(art) {
 async function generateIndexHtml(lis) {
   let indexPath = path.join(process.env.DIST_PATH, "/index.html");
   let templatePath = path.join(process.env.DIST_PATH, "idx.html");
-  let source_data = "kkkl";
+  const dayKey = Math.floor(Date.now() / ONE_DAY);
+  let source_data = `<script src='/source_data.js?${dayKey}'></script>`;
   if (process.env.is_dev == 'yes') {
     indexPath = path.join(process.env.DIST_PATH, "/index_test.html");
     templatePath = path.join(process.cwd(), "/template/idx.html");
-  } else {
-    let sourceDataPath = path.join(process.env.DIST_PATH, "source_data.js");
-    source_data = fs.readFileSync(sourceDataPath, 'utf8');
   }
 
   await generateTemplate(indexPath, templatePath, { lis, source_data }, true)
