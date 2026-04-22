@@ -194,7 +194,7 @@ async function generateMovieListHtml(type = null) {
  */
 async function generateAllMovieHtml(is_main = false) {
   console.log('🚀 开始生成电影HTML页面...');
-
+console.log(is_main)
   try {
     // 获取所有电影
     const movies = await getAllMovies();
@@ -228,14 +228,11 @@ async function generateAllMovieHtml(is_main = false) {
     // 生成列表页
     console.log('📋 开始生成列表页面...');
     await generateMovieListHtml(null);  // 全部影视
-    await generateMovieListHtml('movie'); // 电影列表
-    await generateMovieListHtml('tv');    // 剧集列表
     console.log('✅ 列表页面生成完成！\n');
   } catch (error) {
     console.error('❌ 生成电影HTML过程中发生错误:', error);
   } finally {
     if (!is_main) {
-      await closeDb();
       console.log('👋 子进程退出');
       process.exit(0);
     }
@@ -245,6 +242,7 @@ async function generateAllMovieHtml(is_main = false) {
 
 // 如果是直接运行此文件（作为子进程）
 if (require.main === module) {
+  console.log('🚀 子进程启动中...')
   generateAllMovieHtml();
 }
 

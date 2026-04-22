@@ -73,7 +73,6 @@ exports.fetchAll = async function () {
   }
   let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
   await fsp.writeFile(save_path, source_str, 'utf8');
-  await generateAllMovieHtml();
   console.log('\n🎉 全部任务执行完成');
 }
 
