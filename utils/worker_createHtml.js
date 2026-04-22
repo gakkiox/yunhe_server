@@ -22,12 +22,12 @@ function getAllMovies() {
 }
 
 /**
- * 根据电影ID获取推荐电影列表（同类型的其他电影）
+ * 获取随机推荐电影列表
  */
-function getRecommendations(movieId, type, limit = 3) {
-  const sql = "SELECT * FROM movies WHERE type = ? AND id != ? LIMIT ?";
+function getRecommendations(currentMovieId, type, limit = 3) {
+  const sql = "SELECT * FROM movies WHERE id != ? ORDER BY RANDOM() LIMIT ?";
   return new Promise((resolve, reject) => {
-    db.all(sql, [type, movieId, limit], (error, rows) => {
+    db.all(sql, [currentMovieId, limit], (error, rows) => {
       if (error) {
         console.error('❌ 查询推荐电影失败:', error.message);
         reject(error);
@@ -83,7 +83,7 @@ async function generateMovieHtml(movie) {
     const templatePath = path.join(process.cwd(), '/template/movie_detail.html');
 
     // 获取推荐电影列表
-    const recommendations = await getRecommendations(movie.id, movie.type, 3);
+    const recommendations = await getRecommendations(movie.id, null, 3);
     let type_obj = {'tv':"剧集", 'movie':"电影"};
     let type_origin =movie.type || 'movie' ;
     let type = type_obj[type_origin];
