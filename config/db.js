@@ -81,7 +81,45 @@ function initArticleTable(db) {
     });
   });
 }
+// 初始化/影视文章表（兼容新增字段）
+function initMovieTable(db) {
+  // 返回一个 Promise 对象
+  return new Promise((resolve, reject) => {
+    const createTableSql = `
+    CREATE TABLE IF NOT EXISTS movies (
+      id TEXT PRIMARY KEY,
+      title TEXT NOT NULL,
+      rating_count INTEGER,
+      rating_max INTEGER,
+      rating_star INTEGER,
+      rating_value REAL,
+      pic_large TEXT,
+      pic_normal TEXT,
+      pic_pan TEXT,
+      is_new INTEGER,
+      uri TEXT,
+      episodes_info TEXT,
+      card_subtitle TEXT,
+      type TEXT,
+      is_created INTEGER DEFAULT 0
+    )
+    `;
 
+    db.run(createTableSql, (err) => {
+      if (err) {
+        const errorMsg = '创建/影视文章表失败:' + err.message;
+        console.error(errorMsg);
+        // 失败时 reject 错误信息
+        reject(new Error(errorMsg));
+      } else {
+        const successMsg = '✅ movies 表初始化成功';
+        console.log(successMsg);
+        // 成功时 resolve 成功信息
+        resolve(successMsg);
+      }
+    });
+  });
+}
 // 关闭数据库连接（进程退出时调用）
 function closeDb() {
   return new Promise((resolve, reject) => {
@@ -98,6 +136,7 @@ function closeDb() {
 async function initDB(db){
   await initRecomTable(db);
   await initArticleTable(db);
+  await initMovieTable(db);
 }
 
 module.exports = { db, closeDb, dbPath, initDB };

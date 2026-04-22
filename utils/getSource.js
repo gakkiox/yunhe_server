@@ -3,7 +3,7 @@ const fsp = require('fs').promises;
 const fs = require('fs');
 const path = require('path');
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3');
-
+const { db } = require('../config/db.js');
 // 基础配置
 const base_uri = "http://72.11.150.200:37412";
 const API_URLS = {
@@ -97,11 +97,43 @@ async function getpic(source) {
   })
   for (let item of source.data.items) {
     let image_url = item.pic.large;
-    await getpicHandle(api, image_url)
+    await addMovieItem(item);
+    return;
+    await getpicHandle(api, image_url);
     item.pic.pan = `https://nfs.useai.sbs/douban_pic/${image_url.split('/').pop()}`
   }
 
 
+}
+async function addMovieItem(item) {
+  try {
+    await db.run(`
+      INSERT OR IGNORE INTO  movies (
+        id, title,
+        rating_count, rating_max, rating_star, rating_value,
+        pic_large, pic_normal, pic_pan,
+        is_new, uri, episodes_info, card_subtitle, type
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `, [
+      item.id,
+      item.title,
+      item.rating?.count || 0,
+      item.rating?.max || 10,
+      item.rating?.star_count || 0,
+      item.rating?.value || 0,
+      item.pic?.large || '',
+      item.pic?.normal || '',
+      item.pic?.pan || '',
+      item.is_new ? 1 : 0,
+      item.uri || '',
+      item.episodes_info || '',
+      item.card_subtitle || '',
+      item.type || ''
+    ]);
+  } catch (err) {
+    console.error('保存失败:', err);
+    return null;
+  }
 }
 function getEnv() {
   // Cloudflare R2 配置
