@@ -99,7 +99,7 @@ async function getpic(source) {
   })
   for (let item of source.data.items) {
     let image_url = item.pic.large;
-    // await getpicHandle(api, image_url);
+    await getpicHandle(api, image_url);
     item.pic.pan = `https://nfs.useai.sbs/douban_pic/${image_url.split('/').pop()}`
     await addMovieItem(item);
   }
