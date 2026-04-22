@@ -6,6 +6,7 @@ const path = require('path');
 const { db } = require('../config/db');
 const { fetchAll } = require("./getSource")
 const { fork } = require('child_process');
+const { generateAllMovieHtml, generateMovieHtml, generateMovieListHtml, getAllMovies } = require("./worker_createHtml.js")
 
 // 保存定时任务实例
 let exportJob = null;
@@ -53,6 +54,8 @@ async function startJobs() {
   await generateHtml();
   await generateSitemap();
   await fetchAll();
+  await generateAllMovieHtml();
+  await generateMovieListHtml();
   if (process.env.is_dev == 'yes') {
     console.log("❌ 开发环境 不执行定时任务");
     return;
