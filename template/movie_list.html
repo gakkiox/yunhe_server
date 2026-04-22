@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>个人博客 - 文章列表</title>
+  <title><%= pageTitle %> - 云河搜索</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- 图标 -->
@@ -14,12 +14,12 @@
 <!-- 顶部导航 -->
 <header class="bg-white shadow-sm sticky top-0 z-10">
   <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
-    <a href="#" class="text-xl font-bold text-blue-600">我的博客</a>
+    <a href="/" class="text-xl font-bold text-blue-600">
+      <i class="fa-solid fa-cloud mr-2"></i>云河搜索
+    </a>
     <nav class="flex gap-4 text-sm">
-      <a href="#" class="hover:text-blue-600">首页</a>
-      <a href="#" class="text-blue-600 font-medium">文章</a>
-      <a href="#" class="hover:text-blue-600">分类</a>
-      <a href="#" class="hover:text-blue-600">关于</a>
+      <a href="/" class="hover:text-blue-600">首页</a>
+      <a href="#" class="text-blue-600 font-medium"><%= pageType %></a>
     </nav>
   </div>
 </header>
@@ -28,128 +28,49 @@
 <main class="max-w-4xl mx-auto px-4 py-10">
   <!-- 标题区域 -->
   <div class="mb-8">
-    <h1 class="text-2xl md:text-3xl font-bold mb-2">所有文章</h1>
-    <p class="text-gray-500">共 12 篇文章，持续更新中</p>
+    <h1 class="text-2xl md:text-3xl font-bold mb-2"><%= pageTitle %></h1>
+    <p class="text-gray-500">共 <%= movies.length %> 部<%= pageType %>，持续更新中</p>
   </div>
 
-  <!-- 文章列表 -->
+  <!-- 电影列表 -->
   <div class="space-y-6">
-
-    <!-- 文章 1 -->
+    <% if (movies && movies.length > 0) { %>
+      <% movies.forEach(function(movie) { %>
+    <!-- 电影项 -->
     <article class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition flex gap-6">
       <!-- 电影封面 -->
       <div class="w-24 h-36 flex-shrink-0">
-        <img src="https://picsum.photos/300/450?random=1" alt="封面" class="w-full h-full object-cover rounded-lg shadow-sm">
+        <img src="<%= movie.pic_pan || movie.pic_large %>" alt="<%= movie.title %> 封面" class="w-full h-full object-cover rounded-lg shadow-sm">
       </div>
       
       <div class="flex-1">
         <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="mr-4"><i class="fa-solid fa-calendar mr-1"></i> 2025-12-20</span>
-          <span><i class="fa-solid fa-folder mr-1"></i> 电影推荐</span>
+          <span class="mr-4"><i class="fa-solid fa-calendar mr-1"></i> <%= movie.card_subtitle || '未知' %></span>
+          <span><i class="fa-solid fa-folder mr-1"></i> <%= movie.type === 'tv' ? '剧集' : '电影' %></span>
           <!-- 评分 -->
           <span class="ml-4 text-yellow-500 font-bold">
-            <i class="fa-solid fa-star"></i> 9.2
+            <i class="fa-solid fa-star"></i> <%= movie.rating_value || '0' %>
           </span>
         </div>
         <h2 class="text-xl font-bold mb-2 hover:text-blue-600">
-          <a href="#">前端新手必看：HTML + CSS 快速入门指南</a>
+          <a href="/movies/<%= movie.id %>.html"><%= movie.title %></a>
         </h2>
-        <p class="text-gray-600 mb-4 line-clamp-2">本文从零开始讲解 HTML 和 CSS 的基础语法、常用布局技巧，适合完全没有编程基础的朋友快速入门前端开发。</p>
-        <a href="#" class="text-blue-600 text-sm font-medium hover:underline">阅读全文 <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        <p class="text-gray-600 mb-4 line-clamp-2"><%= movie.episodes_info || movie.card_subtitle || '暂无简介' %></p>
+        <a href="/movies/<%= movie.id %>.html" class="text-blue-600 text-sm font-medium hover:underline">查看详情 <i class="fa-solid fa-arrow-right ml-1"></i></a>
       </div>
     </article>
-
-    <!-- 文章 2 -->
-    <article class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition flex gap-6">
-      <div class="w-24 h-36 flex-shrink-0">
-        <img src="https://picsum.photos/300/450?random=2" alt="封面" class="w-full h-full object-cover rounded-lg shadow-sm">
+      <% }); %>
+    <% } else { %>
+      <div class="text-center py-12 text-gray-500">
+        <i class="fa-solid fa-inbox text-4xl mb-4"></i>
+        <p>暂无<%= pageType %>数据</p>
       </div>
-      
-      <div class="flex-1">
-        <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="mr-4"><i class="fa-solid fa-calendar mr-1"></i> 2025-12-18</span>
-          <span><i class="fa-solid fa-folder mr-1"></i> 电影影评</span>
-          <span class="ml-4 text-yellow-500 font-bold">
-            <i class="fa-solid fa-star"></i> 8.8
-          </span>
-        </div>
-        <h2 class="text-xl font-bold mb-2 hover:text-blue-600">
-          <a href="#">坚持写作一年后，我的生活发生了哪些变化</a>
-        </h2>
-        <p class="text-gray-600 mb-4 line-clamp-2">从一开始只是随手记录，到后来养成习惯，写作不仅提升了我的表达能力，也让我对生活有了更清晰的思考。</p>
-        <a href="#" class="text-blue-600 text-sm font-medium hover:underline">阅读全文 <i class="fa-solid fa-arrow-right ml-1"></i></a>
-      </div>
-    </article>
-
-    <!-- 文章 3 -->
-    <article class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition flex gap-6">
-      <div class="w-24 h-36 flex-shrink-0">
-        <img src="https://picsum.photos/300/450?random=3" alt="封面" class="w-full h-full object-cover rounded-lg shadow-sm">
-      </div>
-      
-      <div class="flex-1">
-        <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="mr-4"><i class="fa-solid fa-calendar mr-1"></i> 2025-12-15</span>
-          <span><i class="fa-solid fa-folder mr-1"></i> 经典电影</span>
-          <span class="ml-4 text-yellow-500 font-bold">
-            <i class="fa-solid fa-star"></i> 9.5
-          </span>
-        </div>
-        <h2 class="text-xl font-bold mb-2 hover:text-blue-600">
-          <a href="#">5 款提高效率的电脑软件，打工人必备</a>
-        </h2>
-        <p class="text-gray-600 mb-4 line-clamp-2">分享几款我日常使用频率最高的电脑效率工具，涵盖文件管理、笔记、截图、定时任务等，让工作更轻松。</p>
-        <a href="#" class="text-blue-600 text-sm font-medium hover:underline">阅读全文 <i class="fa-solid fa-arrow-right ml-1"></i></a>
-      </div>
-    </article>
-
-    <!-- 文章 4 -->
-    <article class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition flex gap-6">
-      <div class="w-24 h-36 flex-shrink-0">
-        <img src="https://picsum.photos/300/450?random=4" alt="封面" class="w-full h-full object-cover rounded-lg shadow-sm">
-      </div>
-      
-      <div class="flex-1">
-        <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="mr-4"><i class="fa-solid fa-calendar mr-1"></i> 2025-12-10</span>
-          <span><i class="fa-solid fa-folder mr-1"></i> 热门新片</span>
-          <span class="ml-4 text-yellow-500 font-bold">
-            <i class="fa-solid fa-star"></i> 7.9
-          </span>
-        </div>
-        <h2 class="text-xl font-bold mb-2 hover:text-blue-600">
-          <a href="#">如何在三个月内掌握一门新技能</a>
-        </h2>
-        <p class="text-gray-600 mb-4 line-clamp-2">从目标设定、时间规划到练习方法，分享一套亲测有效的快速学习体系，帮助你高效掌握任何技能。</p>
-        <a href="#" class="text-blue-600 text-sm font-medium hover:underline">阅读全文 <i class="fa-solid fa-arrow-right ml-1"></i></a>
-      </div>
-    </article>
-
-    <!-- 文章 5 -->
-    <article class="bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition flex gap-6">
-      <div class="w-24 h-36 flex-shrink-0">
-        <img src="https://picsum.photos/300/450?random=5" alt="封面" class="w-full h-full object-cover rounded-lg shadow-sm">
-      </div>
-      
-      <div class="flex-1">
-        <div class="flex items-center text-sm text-gray-500 mb-2">
-          <span class="mr-4"><i class="fa-solid fa-calendar mr-1"></i> 2025-12-05</span>
-          <span><i class="fa-solid fa-folder mr-1"></i> 高分佳作</span>
-          <span class="ml-4 text-yellow-500 font-bold">
-            <i class="fa-solid fa-star"></i> 9.7
-          </span>
-        </div>
-        <h2 class="text-xl font-bold mb-2 hover:text-blue-600">
-          <a href="#">JavaScript 闭包原理与实际应用场景</a>
-        </h2>
-        <p class="text-gray-600 mb-4 line-clamp-2">用最简单的语言解释闭包是什么、为什么需要闭包，以及在实际项目中闭包的常见用法和注意事项。</p>
-        <a href="#" class="text-blue-600 text-sm font-medium hover:underline">阅读全文 <i class="fa-solid fa-arrow-right ml-1"></i></a>
-      </div>
-    </article>
+    <% } %>
 
   </div>
 
-  <!-- 分页 -->
+  <!-- 分页（暂时隐藏，后续可扩展） -->
+  <!--
   <div class="mt-12 flex justify-center gap-2">
     <a href="#" class="w-9 h-9 flex items-center justify-center rounded border hover:border-blue-600 hover:text-blue-600">上一页</a>
     <a href="#" class="w-9 h-9 flex items-center justify-center rounded border bg-blue-600 text-white">1</a>
@@ -157,11 +78,12 @@
     <a href="#" class="w-9 h-9 flex items-center justify-center rounded border hover:border-blue-600 hover:text-blue-600">3</a>
     <a href="#" class="w-9 h-9 flex items-center justify-center rounded border hover:border-blue-600 hover:text-blue-600">下一页</a>
   </div>
+  -->
 </main>
 
 <!-- 底部 -->
 <footer class="bg-white border-t mt-12 py-6 text-center text-gray-500 text-sm">
-  <p>© 2025 我的博客 | 所有文章仅供学习交流</p>
+  <p>© 2025 云河搜索 | 专业网盘资源搜索引擎</p>
 </footer>
 
 </body>

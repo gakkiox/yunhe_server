@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3');
 const { db } = require('../config/db.js');
+const { generateAllMovieHtml} = require('../utils/worker_createHtml.js');
 // 基础配置
 const base_uri = "http://72.11.150.200:37412";
 const API_URLS = {
@@ -72,6 +73,7 @@ exports.fetchAll = async function () {
   }
   let save_path = path.join(process.env.DIST_PATH, 'source_data.js');
   await fsp.writeFile(save_path, source_str, 'utf8');
+  await generateAllMovieHtml();
   console.log('\n🎉 全部任务执行完成');
 }
 
@@ -97,10 +99,9 @@ async function getpic(source) {
   })
   for (let item of source.data.items) {
     let image_url = item.pic.large;
-    await addMovieItem(item);
-    return;
-    await getpicHandle(api, image_url);
+    // await getpicHandle(api, image_url);
     item.pic.pan = `https://nfs.useai.sbs/douban_pic/${image_url.split('/').pop()}`
+    await addMovieItem(item);
   }
 
 

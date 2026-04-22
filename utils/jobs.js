@@ -5,10 +5,12 @@ const fs = require('fs');
 const path = require('path');
 const { db } = require('../config/db');
 const { fetchAll } = require("./getSource")
+const { fork } = require('child_process');
 
 // 保存定时任务实例
 let exportJob = null;
 let getSourceJob = null;
+let createHtmlJob = null;
 function saveDbDataToJson() {
   let savePath = path.join(process.env.DIST_PATH, "recom_list.js");
   return new Promise((resolve, reject) => {
@@ -81,6 +83,46 @@ async function startJobs() {
     await fetchAll();
   });
   console.log(`✅ 每日凌晨1点定时任务已启动（${cronRuleDaily}）`);
+
+  // 每天凌晨2点执行生成HTML的子进程任务
+  const cronRuleCreateHtml = '0 0 2 * * *';
+  createHtmlJob = schedule.scheduleJob(cronRuleCreateHtml, () => {
+    console.log('⏰ 定时任务触发：开始生成电影HTML页面...');
+    
+    // 使用 fork 创建子进程执行 worker_createHtml.js
+    const workerPath = path.join(__dirname, 'worker_createHtml.js');
+    const child = fork(workerPath);
+    
+    // 监听子进程消息
+    child.on('message', (message) => {
+      console.log('📨 子进程消息:', message);
+    });
+    
+    // 监听子进程输出
+    child.stdout?.on('data', (data) => {
+      process.stdout.write(data);
+    });
+    
+    child.stderr?.on('data', (data) => {
+      process.stderr.write(data);
+    });
+    
+    // 监听子进程退出
+    child.on('close', (code) => {
+      if (code === 0) {
+        console.log('✅ 电影HTML生成子进程正常退出');
+      } else {
+        console.error(`❌ 电影HTML生成子进程异常退出，退出码: ${code}`);
+      }
+    });
+    
+    // 监听子进程错误
+    child.on('error', (err) => {
+      console.error('❌ 电影HTML生成子进程启动失败:', err);
+    });
+  });
+  
+  console.log(`✅ 每日凌晨2点定时任务已启动（${cronRuleCreateHtml}）- 生成电影HTML页面`);
 }
 
 /**
@@ -97,6 +139,12 @@ function stopJobs() {
     getSourceJob.cancel();
     console.log('🛑 每日凌晨1点定时任务已停止');
     getSourceJob = null;
+  }
+  // 新增：停止凌晨2点的任务
+  if (createHtmlJob) {
+    createHtmlJob.cancel();
+    console.log('🛑 每日凌晨2点定时任务已停止');
+    createHtmlJob = null;
   }
 }
 

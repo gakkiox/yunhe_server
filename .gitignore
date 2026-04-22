@@ -16,6 +16,7 @@ coverage
 *.local
 *.db
 douban_pic/
+movies/
 articles/
 /cypress/videos/
 /cypress/screenshots/
