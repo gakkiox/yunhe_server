@@ -62,7 +62,7 @@ async function generateMovieHtml(movie) {
   try {
     // 输出目录
     const outputPath = path.join(process.env.DIST_PATH || process.cwd(), '/movies');
-    
+
     // 创建输出目录（如果不存在）
     if (!fs.existsSync(outputPath)) {
       fs.mkdirSync(outputPath, { recursive: true });
@@ -84,8 +84,8 @@ async function generateMovieHtml(movie) {
 
     // 获取推荐电影列表
     const recommendations = await getRecommendations(movie.id, null, 3);
-    let type_obj = {'tv':"剧集", 'movie':"电影"};
-    let type_origin =movie.type || 'movie' ;
+    let type_obj = { 'tv': "剧集", 'movie': "电影" };
+    let type_origin = movie.type || 'movie';
     let type = type_obj[type_origin];
     // 准备模板数据
     const templateData = {
@@ -135,7 +135,7 @@ async function generateMovieListHtml(type = null) {
   try {
     // 输出目录
     const outputPath = path.join(process.env.DIST_PATH || process.cwd(), '/movies');
-    
+
     // 创建输出目录（如果不存在）
     if (!fs.existsSync(outputPath)) {
       fs.mkdirSync(outputPath, { recursive: true });
@@ -144,7 +144,7 @@ async function generateMovieListHtml(type = null) {
 
     // 获取电影列表
     const movies = await getMoviesByType(type);
-    
+
     // 确定页面类型和标题
     let pageType, pageTitle, fileName;
     if (type === 'tv') {
@@ -192,13 +192,13 @@ async function generateMovieListHtml(type = null) {
 /**
  * 主函数：生成所有电影的HTML文件
  */
-async function generateAllMovieHtml() {
+async function generateAllMovieHtml(is_main = false) {
   console.log('🚀 开始生成电影HTML页面...');
-  
+
   try {
     // 获取所有电影
     const movies = await getAllMovies();
-    
+
     if (movies.length === 0) {
       console.log('ℹ️ 没有需要处理的电影数据');
       return;
@@ -215,7 +215,7 @@ async function generateAllMovieHtml() {
       } else {
         failCount++;
       }
-      
+
       // 添加小延迟，避免过快处理
       await new Promise(resolve => setTimeout(resolve, 100));
     }
@@ -234,10 +234,12 @@ async function generateAllMovieHtml() {
   } catch (error) {
     console.error('❌ 生成电影HTML过程中发生错误:', error);
   } finally {
-    // 关闭数据库连接
-    await closeDb();
-    console.log('👋 子进程退出');
-    process.exit(0);
+    if (!is_main) {
+      await closeDb();
+      console.log('👋 子进程退出');
+      process.exit(0);
+    }
+
   }
 }
 
